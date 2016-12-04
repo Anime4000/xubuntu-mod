@@ -116,6 +116,19 @@ echo "Type=Application" >> gnome-disks.desktop
 echo "Categories=GNOME;System" >> gnome-disks.desktop
 echo "Keywords=hard;disk;dvd;cd;vcd;ssd;volume;partition;ntfs;exfat;fat32;ext2;ext3;ext4;iso;image;backup" >> gnome-disks.desktop
 
+echo "[Desktop Entry]" > xfce4-session-logout.desktop
+echo "Name=Log Out" >> xfce4-session-logout.desktop
+echo "GenericName=Log Out" >> xfce4-session-logout.desktop
+echo "X-GNOME-FullName=Log Out" >> xfce4-session-logout.desktop
+echo "Comment=xfce4 desktop manager logout sessions menu" >> xfce4-session-logout.desktop
+echo "Exec=xfce4-session-logout" >> xfce4-session-logout.desktop
+echo "Icon=system-shutdown" >> xfce4-session-logout.desktop
+echo "DBusActivateble=true" >> xfce4-session-logout.desktop
+echo "Terminal=false" >> xfce4-session-logout.desktop
+echo "Type=Application" >> xfce4-session-logout.desktop
+echo "Categories=GNOME;System" >> xfce4-session-logout.desktop
+echo "Keywords=logout;log out;poweroff;power off;shutdown;restart;lock;screen" >> xfce4-session-logout.desktop
+
 chmod +x *
 
 echo "Modify .bashrc"
