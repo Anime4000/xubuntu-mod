@@ -7,16 +7,16 @@
 # Be sure run this script on chroot! (on cubic)
 
 # Nicer
-wget -O "/bin/wucp"
+wget https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/bin/wucp.sh -O "/bin/wucp"
 chmod 755 "/bin/wucp"
-wget -O "/bin/cclogo"
+wget https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/bin/cclogo.sh -O "/bin/cclogo"
 chmod 755 "/bin/cclogo"
-wget -O "/bin/goreboot"
+wget https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/bin/goreboot.sh -O "/bin/goreboot"
 chmod 755 "/bin/goreboot"
 wget https://raw.githubusercontent.com/LionSec/katoolin/master/katoolin.py -O "/bin/katoolin"
 chmod 755 "/bin/katoolin"
 
-wget -O "/etc/skel/useful commands.txt"
+wget https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/cmdhelp.txt -O "/etc/skel/useful commands.txt"
 
 # Add stuff
 wget http://drbl.nchc.org.tw/GPG-KEY-DRBL -O - | sudo apt-key add -
