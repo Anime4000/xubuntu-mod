@@ -7,11 +7,11 @@
 # Be sure run this script on chroot! (on cubic)
 
 # Nicer
-wget https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/bin/wucp.sh -O "/bin/wucp"
+wget https://github.com/Anime4000/xubuntu-mod/raw/master/bin/wucp.sh -O "/bin/wucp"
 chmod 755 "/bin/wucp"
-wget https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/bin/cclogo.sh -O "/bin/cclogo"
+wget https://github.com/Anime4000/xubuntu-mod/raw/master/bin/cclogo.sh -O "/bin/cclogo"
 chmod 755 "/bin/cclogo"
-wget https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/bin/goreboot.sh -O "/bin/goreboot"
+wget https://github.com/Anime4000/xubuntu-mod/raw/master/bin/goreboot.sh -O "/bin/goreboot"
 chmod 755 "/bin/goreboot"
 wget https://raw.githubusercontent.com/LionSec/katoolin/master/katoolin.py -O "/bin/katoolin"
 chmod 755 "/bin/katoolin"
@@ -19,7 +19,7 @@ chmod 755 "/bin/katoolin"
 wget https://github.com/Anime4000/xubuntu-mod/raw/master/curecomp.jpg -O "/usr/share/xfce4/backdrops/curecomp.jpg"
 chmod 644 "/usr/share/xfce4/backdrops/curecomp.jpg"
 
-wget https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/cmdhelp.txt -O "/etc/skel/useful commands.txt"
+wget https://github.com/Anime4000/xubuntu-mod/raw/master/cmdhelp.txt -O "/etc/skel/useful commands.txt"
 
 # Add stuff
 wget http://drbl.nchc.org.tw/GPG-KEY-DRBL -O - | sudo apt-key add -
