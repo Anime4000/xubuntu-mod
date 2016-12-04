@@ -16,6 +16,9 @@ chmod 755 "/bin/goreboot"
 wget https://raw.githubusercontent.com/LionSec/katoolin/master/katoolin.py -O "/bin/katoolin"
 chmod 755 "/bin/katoolin"
 
+wget https://github.com/Anime4000/xubuntu-mod/raw/master/curecomp.jpg -O "/usr/share/xfce4/backdrops/curecomp.jpg"
+chmod 644 "/usr/share/xfce4/backdrops/curecomp.jpg"
+
 wget https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/cmdhelp.txt -O "/etc/skel/useful commands.txt"
 
 # Add stuff
@@ -39,6 +42,8 @@ aircrack-ng reaver ettercap-graphical hydra etherape nmap -y
 #	xmlstarlet ed -u "path" -v "value" "file"
 # add -L to edit in-line
 
+echo "Modifying xfce4 desktop interface"
+
 xmlstarlet ed -L -u "channel/property/property/property[@name='position' and @type='string' and @value='p=6;x=0;y=0']/@value" -v "p=8;x=0;y=0" "/etc/xdg/xdg-xubuntu/xfce4/panel/default.xml"
 xmlstarlet ed -L -u "channel/property/property/property[@name='size' and @type='uint' and @value='24']/@value" -v "32" "/etc/xdg/xdg-xubuntu/xfce4/panel/default.xml"
 
@@ -53,6 +58,8 @@ xmlstarlet ed -L -u "channel/property/property[@name='title_alignment' and @type
 xmlstarlet ed -L -u "channel/property/property[@name='enabled' and @type='bool' and @value='true']/@value" -v "false" "/etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/thunar-volman.xml"
 
 # Make desktop shortcut
+echo "Adding desktop shortcut icon"
+
 mkdir -p /etc/skel/Desktop
 cd /etc/skel/Desktop/
 cp /usr/share/applications/firefox.desktop ./
@@ -111,7 +118,18 @@ echo "Keywords=hard;disk;dvd;cd;vcd;ssd;volume;partition;ntfs;exfat;fat32;ext2;e
 
 chmod +x *
 
+echo "Cleaning..."
 rm -rf ~/.cache
 rm -rf ~/.nano
 rm -rf ~/.config
 rm -rf ~/.local
+
+echo ""
+echo ""
+echo ""
+echo "DONE!"
+echo ""
+echo ""
+echo ""
+
+exit 0
