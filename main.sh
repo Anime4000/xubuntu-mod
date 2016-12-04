@@ -118,6 +118,12 @@ echo "Keywords=hard;disk;dvd;cd;vcd;ssd;volume;partition;ntfs;exfat;fat32;ext2;e
 
 chmod +x *
 
+echo "Modify .bashrc"
+echo "" >> /root/.bashrc
+echo "cclogo" >> /root/.bashrc
+echo "" >> /etc/skel/.bashrc
+echo "cclogo" >> /etc/skel/.bashrc
+
 echo "Cleaning..."
 rm -rf ~/.cache
 rm -rf ~/.nano
