@@ -1,0 +1,30 @@
+List useful commands
+--------------------
+
+Copy folders using rsync
+	Single source:
+		rsync -avh --info=progress2 /dir/src1 /dir/dest
+
+	Multiple source:
+		rsync -avh --info=progress2 /dir/src1 /dir/src2 /dir/dest
+
+Benchmark/Stress Test
+	CPU:
+		sysbench --test=cpu --num-threads=2 --cpu-max-prime=1000000 run
+
+	RAM:
+		sysbench --test=memory --memory-block-size=1M --memory-total-size=10G run
+
+Disk
+	Check unit size:
+		du /media/sda2
+
+	Erase disk:
+		dd if=/dev/sda of=/dev/zero bs=4096 status=progress
+
+	Format exFAT:
+		mkfs.exfat -n DATA -s 8192 /dev/sda2
+
+	Scan disk NTFS:
+		ntfsfix /dev/sda1
+
