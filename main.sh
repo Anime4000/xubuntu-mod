@@ -31,7 +31,7 @@ apt-get update
 apt-get install \
 build-essential git zlib1g-dev libwrap0-dev xfonts-terminus screen xmlstarlet \
 smartmontools gsmartcontrol htop iptraf gcp unzip openvpn qbittorrent \
-drbl clonezilla reiserfsprogs e2fsprogs exfat-utils nilfs-tools pigz \
+drbl clonezilla reiserfsprogs e2fsprogs hfsprogs exfat-utils nilfs-tools pigz \
 gnome-disk-utility gparted gddrescue testdisk recoverjpeg foremost scalpel \
 aircrack-ng reaver ettercap-graphical hydra etherape nmap -y
 
@@ -72,7 +72,7 @@ echo "Name=Clonezilla" >> clonezilla.desktop
 echo "GenericName=Disk Cloning" >> clonezilla.desktop
 echo "X-GNOME-FullName=Disk and Image Cloning" >> clonezilla.desktop
 echo "Comment=A free software disaster recovery, disk cloning and deployment solution." >> clonezilla.desktop
-echo "Exec=xterm -fullscreen -fa Terminus -fs 12 -e 'sudo clonezilla && sudo goreboot'" >> clonezilla.desktop
+echo "Exec=xterm -fullscreen -fa Terminus -fs 12 -e 'sudo clonezilla && xfce4-session-logout'" >> clonezilla.desktop
 echo "Icon=drive-multidisk" >> clonezilla.desktop
 echo "Terminal=false" >> clonezilla.desktop
 echo "Type=Application" >> clonezilla.desktop
@@ -96,7 +96,7 @@ echo "Name=Root Terminal" >> terminalroot.desktop
 echo "GenericName=Linux Terminal" >> terminalroot.desktop
 echo "X-GNOME-FullName=Linux Terminal" >> terminalroot.desktop
 echo "Comment=A powerful command-line interface" >> terminalroot.desktop
-echo "Exec=xfce4-terminal --geometry 80x24 --hide-menubar -T 'Root Terminal' -e 'sudo -i'" >> terminalroot.desktop
+echo "Exec=xfce4-terminal --geometry 100x32 --hide-menubar -T 'Root Terminal' -e 'sudo -i'" >> terminalroot.desktop
 echo "Icon=utilities-terminal" >> terminalroot.desktop
 echo "Terminal=false" >> terminalroot.desktop
 echo "Type=Application" >> terminalroot.desktop
