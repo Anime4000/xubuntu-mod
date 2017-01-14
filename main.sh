@@ -27,6 +27,10 @@ echo "# Clonezilla Repo (added manually)" >> /etc/apt/sources.list
 echo "deb http://free.nchc.org.tw/ubuntu xenial main restricted universe multiverse" >> /etc/apt/sources.list
 echo "deb http://free.nchc.org.tw/drbl-core drbl stable" >> /etc/apt/sources.list
 
+# i-nex (cpu-z for linux)
+add-apt-repository ppa:nemh/gambas3
+add-apt-repository ppa:i-nex-development-team/stable
+
 apt-get update
 apt-get install \
 build-essential git zlib1g-dev libwrap0-dev xfonts-terminus screen xmlstarlet \
@@ -62,6 +66,7 @@ echo "Adding desktop shortcut icon"
 
 mkdir -p /etc/skel/Desktop
 cd /etc/skel/Desktop/
+cp /usr/share/applications/i-nex.desktop ./
 cp /usr/share/applications/firefox.desktop ./
 cp /usr/share/applications/gparted.desktop ./
 cp /usr/share/applications/gsmartcontrol.desktop ./
