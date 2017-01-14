@@ -34,7 +34,7 @@ add-apt-repository ppa:i-nex-development-team/stable
 apt-get update
 apt-get install \
 build-essential git zlib1g-dev libwrap0-dev xfonts-terminus screen xmlstarlet \
-smartmontools gsmartcontrol htop iptraf gcp unzip openvpn qbittorrent \
+smartmontools gsmartcontrol htop iptraf gcp unzip openvpn qbittorrent i-nex \
 hdparm drbl clonezilla reiserfsprogs e2fsprogs hfsprogs exfat-utils nilfs-tools pigz \
 gnome-disk-utility gparted gddrescue testdisk recoverjpeg foremost scalpel \
 aircrack-ng reaver ettercap-graphical hydra etherape nmap -y
