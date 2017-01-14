@@ -31,7 +31,7 @@ apt-get update
 apt-get install \
 build-essential git zlib1g-dev libwrap0-dev xfonts-terminus screen xmlstarlet \
 smartmontools gsmartcontrol htop iptraf gcp unzip openvpn qbittorrent \
-drbl clonezilla reiserfsprogs e2fsprogs hfsprogs exfat-utils nilfs-tools pigz \
+hdparm drbl clonezilla reiserfsprogs e2fsprogs hfsprogs exfat-utils nilfs-tools pigz \
 gnome-disk-utility gparted gddrescue testdisk recoverjpeg foremost scalpel \
 aircrack-ng reaver ettercap-graphical hydra etherape nmap -y
 
@@ -84,7 +84,7 @@ echo "Name=Task Manager" >> taskmanager.desktop
 echo "GenericName=htop task manager" >> taskmanager.desktop
 echo "X-GNOME-FullName=htop task manager" >> taskmanager.desktop
 echo "Comment=A powerful task manager for linux" >> taskmanager.desktop
-echo "Exec=xterm -T 'Task Manager (htop)' -geometry 100x28 -fa Terminus -fs 12 -e 'sudo htop'" >> taskmanager.desktop
+echo "Exec=xterm -T 'Task Manager (htop)' -geometry 100x30 -fa Terminus -fs 12 -e 'sudo htop'" >> taskmanager.desktop
 echo "Icon=xfce4-cpugraph-plugin" >> taskmanager.desktop
 echo "Terminal=false" >> taskmanager.desktop
 echo "Type=Application" >> taskmanager.desktop
@@ -96,7 +96,7 @@ echo "Name=Root Terminal" >> terminalroot.desktop
 echo "GenericName=Linux Terminal" >> terminalroot.desktop
 echo "X-GNOME-FullName=Linux Terminal" >> terminalroot.desktop
 echo "Comment=A powerful command-line interface" >> terminalroot.desktop
-echo "Exec=xfce4-terminal --geometry 100x32 --hide-menubar -T 'Root Terminal' -e 'sudo -i'" >> terminalroot.desktop
+echo "Exec=xfce4-terminal --geometry 100x30 --hide-menubar -T 'Root Terminal' -e 'sudo -i'" >> terminalroot.desktop
 echo "Icon=utilities-terminal" >> terminalroot.desktop
 echo "Terminal=false" >> terminalroot.desktop
 echo "Type=Application" >> terminalroot.desktop
