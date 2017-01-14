@@ -16,6 +16,9 @@ chmod 755 "/bin/goreboot"
 wget https://raw.githubusercontent.com/LionSec/katoolin/master/katoolin.py -O "/bin/katoolin"
 chmod 755 "/bin/katoolin"
 
+wget https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py -O "/bin/speedtest-cli"
+chmod 755 "/bin/speedtest-cli"
+
 wget https://github.com/Anime4000/xubuntu-mod/raw/master/curecomp.jpg -O "/usr/share/xfce4/backdrops/curecomp.jpg"
 chmod 644 "/usr/share/xfce4/backdrops/curecomp.jpg"
 
