@@ -36,7 +36,7 @@ add-apt-repository ppa:i-nex-development-team/stable
 
 apt-get update
 apt-get install \
-build-essential git zlib1g-dev libwrap0-dev xfonts-terminus screen xmlstarlet \
+build-essential git zlib1g-dev libwrap0-dev xfonts-terminus screen xmlstarlet python \
 smartmontools gsmartcontrol htop iptraf gcp unzip openvpn qbittorrent i-nex sysbench \
 hdparm drbl clonezilla reiserfsprogs e2fsprogs hfsprogs exfat-utils nilfs-tools pigz \
 gnome-disk-utility gparted gddrescue testdisk recoverjpeg foremost scalpel \
