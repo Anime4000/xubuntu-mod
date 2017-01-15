@@ -18,6 +18,7 @@ chmod 755 "/bin/katoolin"
 
 wget https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py -O "/bin/speedtest-cli"
 chmod 755 "/bin/speedtest-cli"
+ln -s "/bin/speedtest-cli" "/bin/speedtest"
 
 wget https://github.com/Anime4000/xubuntu-mod/raw/master/curecomp.jpg -O "/usr/share/xfce4/backdrops/curecomp.jpg"
 chmod 644 "/usr/share/xfce4/backdrops/curecomp.jpg"
