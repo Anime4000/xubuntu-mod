@@ -8,6 +8,13 @@ Copy folders using rsync
 	Multiple source:
 		rsync -avh --info=progress2 /dir/src1 /dir/src2 /dir/dest
 
+Copy folers using gcp
+	Single source:
+		gcp /src /dest
+
+	Multiple source:
+		gcp /src1 /src2 /src3 /dest
+
 Benchmark/Stress Test
 	CPU:
 		sysbench --test=cpu --num-threads=2 --cpu-max-prime=1000000 run
@@ -20,10 +27,10 @@ Disk
 		du /media/sda2
 
 	Erase disk:
-		dd if=/dev/sda of=/dev/zero bs=4096 status=progress
+		dd if=/dev/sda of=/dev/urandom bs=4096 status=progress
 
 	Format exFAT:
-		mkfs.exfat -n DATA -s 8192 /dev/sda2
+		mkfs.exfat -n DATA /dev/sda2
 
 	Scan disk NTFS:
 		ntfsfix /dev/sda1

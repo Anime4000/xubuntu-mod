@@ -7,12 +7,14 @@
 # Be sure run this script on chroot! (on cubic)
 
 # Nicer
-wget https://github.com/Anime4000/xubuntu-mod/raw/master/bin/wucp.sh -O "/bin/wucp"
-chmod 755 "/bin/wucp"
-wget https://github.com/Anime4000/xubuntu-mod/raw/master/bin/cclogo.sh -O "/bin/cclogo"
-chmod 755 "/bin/cclogo"
-wget https://github.com/Anime4000/xubuntu-mod/raw/master/bin/goreboot.sh -O "/bin/goreboot"
-chmod 755 "/bin/goreboot"
+wget https://github.com/Anime4000/xubuntu-mod/raw/master/bin/wucp.sh -O "/bin/wucp.sh"
+chmod 755 "/bin/wucp.sh"
+ln -s "/bin/wucp.sh" "/bin/wucp"
+
+wget https://github.com/Anime4000/xubuntu-mod/raw/master/bin/cclogo.sh -O "/bin/cclogo.sh"
+chmod 755 "/bin/cclogo.sh"
+ln -s "/bin/cclogo.sh" "/bin/cclogo"
+
 wget https://raw.githubusercontent.com/LionSec/katoolin/master/katoolin.py -O "/bin/katoolin"
 chmod 755 "/bin/katoolin"
 
@@ -70,11 +72,45 @@ echo "Adding desktop shortcut icon"
 
 mkdir -p /etc/skel/Desktop
 cd /etc/skel/Desktop/
-cp /usr/share/applications/i-nex.desktop ./
+
 cp /usr/share/applications/firefox.desktop ./
-cp /usr/share/applications/gparted.desktop ./
-cp /usr/share/applications/gsmartcontrol.desktop ./
 cp /usr/share/applications/gnome-calculator.desktop ./
+
+echo "[Desktop Entry]" > cpu-z.desktop
+echo "Name=CPU-Z" >> cpu-z.desktop
+echo "GenericName=I-NEX" >> cpu-z.desktop
+echo "X-GNOME-FullName=Alternative for Windows CPU-Z" >> cpu-z.desktop
+echo "Comment=View system information such as CPU clock speed, feature & more" >> cpu-z.desktop
+echo "Exec=/usr/bin/i-nex.gambas" >> cpu-z.desktop
+echo "Icon=/usr/share/pixmaps/i-nex-128.png" >> cpu-z.desktop
+echo "Terminal=false" >> cpu-z.desktop
+echo "Type=Application" >> cpu-z.desktop
+echo "Categories=GNOME;System" >> cpu-z.desktop
+echo "Keywords=CPU-Z" >> cpu-z.desktop
+
+echo "[Desktop Entry]" > diskhealth.desktop
+echo "Name=Disk Health" >> diskhealth.desktop
+echo "GenericName=S.M.A.R.T." >> diskhealth.desktop
+echo "X-GNOME-FullName=Self-Monitoring, Analysis and Reporting Technology" >> diskhealth.desktop
+echo "Comment=View disk health and status" >> diskhealth.desktop
+echo "Exec=xterm -e 'sudo gsmartcontrol'" >> diskhealth.desktop
+echo "Icon=gsmartcontrol" >> diskhealth.desktop
+echo "Terminal=false" >> diskhealth.desktop
+echo "Type=Application" >> diskhealth.desktop
+echo "Categories=GNOME;System" >> diskhealth.desktop
+echo "Keywords=Disk;Disk Health" >> diskhealth.desktop
+
+echo "[Desktop Entry]" > gparted.desktop
+echo "Name=Partition Editor" >> gparted.desktop
+echo "GenericName=Partition Editor" >> gparted.desktop
+echo "X-GNOME-FullName=GParted Partition Editor" >> gparted.desktop
+echo "Comment=Create, reorganise, and delete partition" >> gparted.desktop
+echo "Exec=gparted-pkexec" >> gparted.desktop
+echo "Icon=gparted" >> gparted.desktop
+echo "Terminal=false" >> gparted.desktop
+echo "Type=Application" >> gparted.desktop
+echo "Categories=GNOME;System;Filesystem;Settings" >> gparted.desktop
+echo "Keywords=Partition" >> gparted.desktop
 
 echo "[Desktop Entry]" > clonezilla.desktop
 echo "Name=Clonezilla" >> clonezilla.desktop
@@ -85,7 +121,7 @@ echo "Exec=xterm -fullscreen -fa Terminus -fs 12 -e 'sudo clonezilla && xfce4-se
 echo "Icon=drive-multidisk" >> clonezilla.desktop
 echo "Terminal=false" >> clonezilla.desktop
 echo "Type=Application" >> clonezilla.desktop
-echo "Categories=GNOME;System;Filesystem" >> clonezilla.desktop
+echo "Categories=GNOME;System;Filesystem;Settings" >> clonezilla.desktop
 echo "Keywords=Partition;Clone;Cloning;Disk;Clonezilla" >> clonezilla.desktop
 
 echo "[Desktop Entry]" > taskmanager.desktop
