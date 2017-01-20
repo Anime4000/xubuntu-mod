@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 
 # Customise Xubuntu 16.04.1
 # Property of CureComp Technology Trading & Services
@@ -82,7 +82,7 @@ echo "GenericName=I-NEX" >> cpu-z.desktop
 echo "X-GNOME-FullName=Alternative for Windows CPU-Z" >> cpu-z.desktop
 echo "Comment=View system information such as CPU clock speed, feature & more" >> cpu-z.desktop
 echo "Exec=/usr/bin/i-nex.gambas" >> cpu-z.desktop
-echo "Icon=/usr/share/pixmaps/i-nex-128.png" >> cpu-z.desktop
+echo "Icon=processor" >> cpu-z.desktop
 echo "Terminal=false" >> cpu-z.desktop
 echo "Type=Application" >> cpu-z.desktop
 echo "Categories=GNOME;System" >> cpu-z.desktop
@@ -187,6 +187,16 @@ rm -rf ~/.cache
 rm -rf ~/.nano
 rm -rf ~/.config
 rm -rf ~/.local
+
+echo "modifying shutdown/restart script"
+echo "#! /bin/bash" > /etc/init.d/umount-clonezilla.sh
+echo "# Unmount Clonezilla disk" >> /etc/init.d/umount-clonezilla.sh
+echo "echo 'Unmount clonezilla disk'" >> /etc/init.d/umount-clonezilla.sh
+echo "umount -v /home/partimag" >> /etc/init.d/umount-clonezilla.sh
+echo "echo 'DONE! If fails, need run scan disk.'" >> /etc/init.d/umount-clonezilla.sh
+chmod +x /etc/init.d/umount-clonezilla.sh
+ln -s /etc/init.d/umount-clonezilla.sh /etc/rc0.d/K99umount-clonezilla
+ln -s /etc/init.d/umount-clonezilla.sh /etc/rc6.d/K99umount-clonezilla
 
 echo ""
 echo ""
