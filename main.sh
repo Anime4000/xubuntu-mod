@@ -195,8 +195,8 @@ echo "echo 'Unmount clonezilla disk'" >> /etc/init.d/umount-clonezilla.sh
 echo "umount -v /home/partimag" >> /etc/init.d/umount-clonezilla.sh
 echo "echo 'DONE! If fails, need run scan disk.'" >> /etc/init.d/umount-clonezilla.sh
 chmod +x /etc/init.d/umount-clonezilla.sh
-ln -s /etc/init.d/umount-clonezilla.sh /etc/rc0.d/K11umount-clonezilla
-ln -s /etc/init.d/umount-clonezilla.sh /etc/rc6.d/K11umount-clonezilla
+ln -s /etc/init.d/umount-clonezilla.sh /etc/rc0.d/K10umount-clonezilla
+ln -s /etc/init.d/umount-clonezilla.sh /etc/rc6.d/K10umount-clonezilla
 
 echo ""
 echo ""
