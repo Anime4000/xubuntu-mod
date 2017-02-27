@@ -7,28 +7,28 @@
 # Be sure run this script on chroot! (on cubic)
 
 # Nicer
-wget https://github.com/Anime4000/xubuntu-mod/raw/master/bin/wucp.sh -O "/bin/wucp.sh"
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/bin/wucp.sh -O "/bin/wucp.sh"
 chmod 755 "/bin/wucp.sh"
 ln -s "/bin/wucp.sh" "/bin/wucp"
 
-wget https://github.com/Anime4000/xubuntu-mod/raw/master/bin/cclogo.sh -O "/bin/cclogo.sh"
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/bin/cclogo.sh -O "/bin/cclogo.sh"
 chmod 755 "/bin/cclogo.sh"
 ln -s "/bin/cclogo.sh" "/bin/cclogo"
 
-wget https://raw.githubusercontent.com/LionSec/katoolin/master/katoolin.py -O "/bin/katoolin"
+wget --no-check-certificate https://raw.githubusercontent.com/LionSec/katoolin/master/katoolin.py -O "/bin/katoolin"
 chmod 755 "/bin/katoolin"
 
-wget https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py -O "/bin/speedtest-cli"
+wget --no-check-certificate https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py -O "/bin/speedtest-cli"
 chmod 755 "/bin/speedtest-cli"
 ln -s "/bin/speedtest-cli" "/bin/speedtest"
 
-wget https://github.com/Anime4000/xubuntu-mod/raw/master/curecomp.jpg -O "/usr/share/xfce4/backdrops/curecomp.jpg"
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/curecomp.jpg -O "/usr/share/xfce4/backdrops/curecomp.jpg"
 chmod 644 "/usr/share/xfce4/backdrops/curecomp.jpg"
 
-wget https://github.com/Anime4000/xubuntu-mod/raw/master/cmdhelp.txt -O "/etc/skel/useful commands.txt"
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/cmdhelp.txt -O "/etc/skel/useful commands.txt"
 
 # Add stuff
-wget http://drbl.nchc.org.tw/GPG-KEY-DRBL -O - | sudo apt-key add -
+wget --no-check-certificate http://drbl.nchc.org.tw/GPG-KEY-DRBL -O - | sudo apt-key add -
 echo "# Clonezilla Repo (added manually)" >> /etc/apt/sources.list
 echo "deb http://free.nchc.org.tw/ubuntu xenial main restricted universe multiverse" >> /etc/apt/sources.list
 echo "deb http://free.nchc.org.tw/drbl-core drbl stable" >> /etc/apt/sources.list
@@ -189,14 +189,10 @@ rm -rf ~/.config
 rm -rf ~/.local
 
 echo "modifying shutdown/restart script"
-echo "#! /bin/bash" > /etc/init.d/umount-clonezilla.sh
-echo "# Unmount Clonezilla disk" >> /etc/init.d/umount-clonezilla.sh
-echo "echo 'Unmount clonezilla disk'" >> /etc/init.d/umount-clonezilla.sh
-echo "umount -v /home/partimag" >> /etc/init.d/umount-clonezilla.sh
-echo "echo 'DONE! If fails, need run scan disk.'" >> /etc/init.d/umount-clonezilla.sh
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/umount-clonezilla.sh -O "/etc/init.d/umount-clonezilla.sh"
 chmod +x /etc/init.d/umount-clonezilla.sh
-ln -s /etc/init.d/umount-clonezilla.sh /etc/rc0.d/K10umount-clonezilla
-ln -s /etc/init.d/umount-clonezilla.sh /etc/rc6.d/K10umount-clonezilla
+ln -s /etc/init.d/umount-clonezilla.sh /etc/rc0.d/K01umount-clonezilla
+ln -s /etc/init.d/umount-clonezilla.sh /etc/rc6.d/K01umount-clonezilla
 
 echo ""
 echo ""
