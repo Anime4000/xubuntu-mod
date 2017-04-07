@@ -67,6 +67,10 @@ xmlstarlet ed -L -u "channel/property/property[@name='title_alignment' and @type
 
 xmlstarlet ed -L -u "channel/property/property[@name='enabled' and @type='bool' and @value='true']/@value" -v "false" "/etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/thunar-volman.xml"
 
+echo "Modify xfce4 terminal"
+mv "/etc/xdg/xdg-xubuntu/xfce4/terminal/terminalrc" "/etc/xdg/xdg-xubuntu/xfce4/terminal/terminalrc.bak"
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/terminalrc -O "/etc/xdg/xdg-xubuntu/xfce4/terminal/terminalrc"
+
 # Make desktop shortcut
 echo "Adding desktop shortcut icon"
 
@@ -141,7 +145,7 @@ echo "Name=Root Terminal" >> terminalroot.desktop
 echo "GenericName=Linux Terminal" >> terminalroot.desktop
 echo "X-GNOME-FullName=Linux Terminal" >> terminalroot.desktop
 echo "Comment=A powerful command-line interface" >> terminalroot.desktop
-echo "Exec=xterm -T 'Root Terminal' -geometry 100x30 -fa Terminus -fs 12 -e 'sudo -i'" >> terminalroot.desktop
+echo "Exec=xfce4-terminal --hide-menubar --title='Root Terminal' --geometry=90x30 -e 'sudo -i'" >> terminalroot.desktop
 echo "Icon=utilities-terminal" >> terminalroot.desktop
 echo "Terminal=false" >> terminalroot.desktop
 echo "Type=Application" >> terminalroot.desktop
