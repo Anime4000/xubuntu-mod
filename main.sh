@@ -67,9 +67,10 @@ xmlstarlet ed -L -u "channel/property/property[@name='title_alignment' and @type
 
 xmlstarlet ed -L -u "channel/property/property[@name='enabled' and @type='bool' and @value='true']/@value" -v "false" "/etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/thunar-volman.xml"
 
-echo "Modify xfce4 terminal"
+echo "Modify xfce4-terminal"
 mv "/etc/xdg/xdg-xubuntu/xfce4/terminal/terminalrc" "/etc/xdg/xdg-xubuntu/xfce4/terminal/terminalrc.bak"
 wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/terminalrc -O "/etc/xdg/xdg-xubuntu/xfce4/terminal/terminalrc"
+chmod 644 "/etc/xdg/xdg-xubuntu/xfce4/terminal/terminalrc"
 
 # Make desktop shortcut
 echo "Adding desktop shortcut icon"
