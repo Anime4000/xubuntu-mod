@@ -1,0 +1,12 @@
+*.avi
+*.mpg
+*.mpeg
+*.mp4
+*.mkv
+*.wmv
+*.mov
+*.qt
+*.rmvb
+*.3gp
+*.3gpp
+*.flv
