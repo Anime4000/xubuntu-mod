@@ -1,0 +1,12 @@
+*.mp2
+*.mp3
+*.mp4
+*.m4a
+*.wav
+*.aiff
+*.flac
+*.wma
+*.opus
+*.ogg
+*.amr
+*.mka
