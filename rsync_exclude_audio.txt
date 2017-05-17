@@ -3,6 +3,7 @@
 *.mp4
 *.m4a
 *.wav
+*.aif
 *.aiff
 *.flac
 *.wma
@@ -10,3 +11,6 @@
 *.ogg
 *.amr
 *.mka
+*.ra
+*.m3u
+*.aac
