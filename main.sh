@@ -27,6 +27,11 @@ chmod 644 "/usr/share/xfce4/backdrops/curecomp.jpg"
 
 wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/cmdhelp.txt -O "/etc/skel/useful commands.txt"
 
+mkdir "/etc/cc"
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/rsync_exclude.txt -O "/etc/cc/exclude.txt"
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/rsync_exclude_audio.txt -O "/etc/cc/exclude_audio.txt"
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/rsync_exclude_video.txt -O "/etc/cc/exclude_video.txt"
+
 # Add stuff
 wget --no-check-certificate http://drbl.nchc.org.tw/GPG-KEY-DRBL -O - | sudo apt-key add -
 echo "# Clonezilla Repo (added manually)" >> /etc/apt/sources.list
