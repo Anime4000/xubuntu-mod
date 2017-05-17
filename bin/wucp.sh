@@ -38,51 +38,44 @@ if [ "$1" == "-h" ]; then
 	exit 0
 fi
 
-folders=""
-cd "$1"
+src=""
 
 if [ -d "Desktop" ]; then
-	folders="$folders Desktop"
+	src="'$1/Desktop'"
 	echo "Folder found: Desktop"
 fi
 
 if [ -d "Documents" ]; then
-	folders="$folders Documents"
+	src="$src '$1/Documents'"
 	echo "Folder found: Documents"
 fi
 
 if [ -d "Downloads" ]; then
-	folders="$folders Downloads"
+	src="$src '$1/Downloads'"
 	echo "Folder found: Downloads"
 fi
 
 if [ -d "Music" ]; then
-	folders="$folders Music"
+	src="$src '$1/Music'"
 	echo "Folder found: Music"
 fi
 
 if [ -d "Pictures" ]; then
-	folders="$folders Pictures"
+	src="$src '$1/Pictures'"
 	echo "Folder found: Pictures"
 fi
 
 if [ -d "Videos" ]; then
-	folders="$folders Videos"
+	src="$src '$1/Videos'"
 	echo "Folder found: Videos"
 fi
 
-if [[ -z "$folders" ]]; then
-	echo "No folders found :("
-	exit 2
-fi
-
-cd "$1"
 clock=`date +%Y-%m-%d_%H-%M-%S`
 
 mkdir "$2/backup_$clock"
-gcp -r -f -P $folders "$2/backup_$clock"
+rsync -avh --info=progress2 --exclude-from="/etc/cc/exclude.txt" $src "$2/backup_$clock"
 
-echo ""
-echo "DONE!!!"
-echo ""
+echo "---------"
+echo " DONE!!! "
+echo "---------"
 exit 0
