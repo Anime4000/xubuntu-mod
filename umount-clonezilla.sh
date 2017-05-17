@@ -1,4 +1,4 @@
-#! /bin/bash"
+#!/bin/bash"
 # Unmount Clonezilla disk" 
 echo 'Unmount clonezilla disk'
 
