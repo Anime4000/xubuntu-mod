@@ -19,7 +19,9 @@ fi
 
 if [ "$1" == "-h" ]; then
 	echo "Usage:"
-	echo "modscr initrd.lz new-initrd.lz"
+	echo "modscr old-initrd.lz initrd.lz"
+	echo ""
+	echo "new file must initrd.lz, you need to rename source file first."
 	echo ""
 	exit 0
 fi
@@ -43,7 +45,7 @@ chmod 644 usr/share/plymouth/themes/xubuntu-logo/logo.png
 chmod 644 usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
 
 echo "Building... Please Wait..."
-find . | cpio --quiet --dereference -o -H newc | lzma -7 > $DEST
+find . | cpio --create --format='newc' | lzma -7 > $DEST
 sleep 5
 
 echo "Done!!!"
