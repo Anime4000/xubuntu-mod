@@ -25,8 +25,8 @@ if [ "$1" == "-h" ]; then
 fi
 
 OLDIR="$PWD"
-SOURCE="$( cd "$( dirname "$1" )" && pwd )"
-DEST="$( cd "$( dirname "$2" )" && pwd )"
+SOURCE=`realpath $1`
+DEST=`realpath $2`
 
 mkdir /tmp/000-initrd
 cd /tmp/000-initrd
@@ -42,10 +42,11 @@ wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/
 chmod 644 usr/share/plymouth/themes/xubuntu-logo/logo.png
 chmod 644 usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
 
-echo "Building"
+echo "Building... Please Wait..."
 find . | cpio --quiet --dereference -o -H newc | lzma -7 > $DEST
+sleep 5
 
-echo "Done!"
+echo "Done!!!"
 rm -rf /tmp/000-initrd
 
 cd "$OLDIR"
