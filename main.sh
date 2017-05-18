@@ -48,7 +48,8 @@ build-essential git zlib1g-dev libwrap0-dev xfonts-terminus screen xmlstarlet py
 smartmontools gsmartcontrol htop iptraf gcp unzip openvpn qbittorrent i-nex sysbench \
 hdparm drbl clonezilla reiserfsprogs e2fsprogs hfsprogs exfat-utils nilfs-tools pigz \
 gnome-disk-utility gparted gddrescue testdisk recoverjpeg foremost scalpel florence \
-aircrack-ng reaver ettercap-graphical hydra etherape nmap pppoeconf openssh-server -y
+aircrack-ng reaver ettercap-graphical hydra etherape nmap pppoeconf openssh-server \
+ubuntu-restricted-extras -y
 
 # Edit XFCE4 UI
 # to view xml
@@ -203,6 +204,14 @@ wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/
 chmod +x /etc/init.d/umount-clonezilla.sh
 ln -s /etc/init.d/umount-clonezilla.sh /etc/rc0.d/K01umount-clonezilla
 ln -s /etc/init.d/umount-clonezilla.sh /etc/rc6.d/K01umount-clonezilla
+
+echo "Modify Splash Screen"
+rm -f /usr/share/plymouth/themes/xubuntu-logo/logo.png
+rm -f /usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/plymouth/logo.png -O /usr/share/plymouth/themes/xubuntu-logo/logo.png
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/plymouth/wallpaper.png -O /usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
+chmod 644 /usr/share/plymouth/themes/xubuntu-logo/logo.png
+chmod 644 /usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
 
 echo ""
 echo ""
