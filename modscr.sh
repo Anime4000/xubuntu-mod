@@ -46,3 +46,5 @@ echo "Done!"
 rm -rf /tmp/000-initrd
 
 cd "$oldir"
+
+exit 0
