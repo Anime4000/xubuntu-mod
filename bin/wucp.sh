@@ -1,4 +1,5 @@
 #/bin/bash
+clock=`date +%Y-%m-%d_%H-%M-%S`
 
 echo "----------------------------------------"
 echo "| Backup Windows user files and folder |"
@@ -38,42 +39,9 @@ if [ "$1" == "-h" ]; then
 	exit 0
 fi
 
-src=""
-
-if [ -d "Desktop" ]; then
-	src="'$1/Desktop'"
-	echo "Folder found: Desktop"
-fi
-
-if [ -d "Documents" ]; then
-	src="$src '$1/Documents'"
-	echo "Folder found: Documents"
-fi
-
-if [ -d "Downloads" ]; then
-	src="$src '$1/Downloads'"
-	echo "Folder found: Downloads"
-fi
-
-if [ -d "Music" ]; then
-	src="$src '$1/Music'"
-	echo "Folder found: Music"
-fi
-
-if [ -d "Pictures" ]; then
-	src="$src '$1/Pictures'"
-	echo "Folder found: Pictures"
-fi
-
-if [ -d "Videos" ]; then
-	src="$src '$1/Videos'"
-	echo "Folder found: Videos"
-fi
-
-clock=`date +%Y-%m-%d_%H-%M-%S`
-
-mkdir "$2/backup_$clock"
-rsync -avh --info=progress2 --exclude-from="/etc/cc/exclude.txt" $src "$2/backup_$clock"
+cd "$PWD"
+mkdir -p "$2/backup_$clock"
+rsync -avh --info=progress2 --exclude-from="/etc/cc/exclude.txt" "$1/Desktop" "$1/Documents" "$1/Downloads" "$1/Music" "$1/Pictures" "$1/Videos" "$1/Favorites" "$1/Links" "$2/backup_$clock"
 
 echo "---------"
 echo " DONE!!! "
