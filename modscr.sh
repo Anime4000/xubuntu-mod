@@ -1,8 +1,7 @@
 #!/bin/bash
+
 # edit splash screen live CD
 # casper/initrd.lz
-
-oldir="$PWD"
 
 if [ $# -eq 0 ]; then
 	echo "No arguments provided"
@@ -25,11 +24,15 @@ if [ "$1" == "-h" ]; then
 	exit 0
 fi
 
+OLDIR="$PWD"
+SOURCE="$( cd "$( dirname "$1" )" && pwd )"
+DEST="$( cd "$( dirname "$2" )" && pwd )"
+
 mkdir /tmp/000-initrd
 cd /tmp/000-initrd
 
 echo "Extracting"
-lzma -dc -S .lz $1 | cpio -imvd --no-absolute-filenames
+lzma -dc -S .lz $SOURCE | cpio -imvd --no-absolute-filenames
 
 echo "Modifying"
 rm -f usr/share/plymouth/themes/xubuntu-logo/logo.png
@@ -40,11 +43,11 @@ chmod 644 usr/share/plymouth/themes/xubuntu-logo/logo.png
 chmod 644 usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
 
 echo "Building"
-find . | cpio --quiet --dereference -o -H newc | lzma -7 > $2
+find . | cpio --quiet --dereference -o -H newc | lzma -7 > $DEST
 
 echo "Done!"
 rm -rf /tmp/000-initrd
 
-cd "$oldir"
+cd "$OLDIR"
 
 exit 0
