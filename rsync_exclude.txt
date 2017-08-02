@@ -21,3 +21,4 @@ cover.jp*g
 *.log
 *.tmp
 *.temp
+*.crdownload
