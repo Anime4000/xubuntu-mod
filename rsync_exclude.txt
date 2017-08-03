@@ -25,3 +25,4 @@ cover.jp*g
 *.asec
 *.part*.rar
 *.msi
+*.torrent
