@@ -23,3 +23,5 @@ cover.jp*g
 *.temp
 *.crdownload
 *.asec
+*.part*.rar
+*.msi
