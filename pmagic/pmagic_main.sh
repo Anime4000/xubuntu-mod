@@ -7,6 +7,11 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # cd ~/sqfs
 # sudo unsquashfs /media/anime4000/PM_2017_06_12/pmagic/pmodules/PMAGIC_2017_06_12.SQFS
 
+if [[ $EUID -ne 0 ]]; then
+	echo "This script must be run as root!" 
+	exit 1
+fi
+
 echo "Place this script where squashfs-root folder sit"
 
 cd "$DIR/squashfs-root/usr/share/backgrounds"
