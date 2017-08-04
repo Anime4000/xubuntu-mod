@@ -26,3 +26,4 @@ cover.jp*g
 *.part*.rar
 *.msi
 *.torrent
+.~lock*
