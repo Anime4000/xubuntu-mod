@@ -41,7 +41,7 @@ fi
 
 cd "$PWD"
 mkdir -p "$2/backup_$clock"
-rsync -avh --info=progress2 --exclude-from="/etc/cc/exclude.txt" "$1/Desktop" "$1/Documents" "$1/Downloads" "$1/Music" "$1/Pictures" "$1/Videos" "$1/Favorites" "$1/Links" "$2/backup_$clock"
+rsync -avh --no-i-r --info=progress2 --exclude-from="/etc/cc/exclude.txt" "$1/Desktop" "$1/Documents" "$1/Downloads" "$1/Music" "$1/Pictures" "$1/Videos" "$1/Favorites" "$1/Links" "$2/backup_$clock"
 
 echo "---------"
 echo " DONE!!! "
