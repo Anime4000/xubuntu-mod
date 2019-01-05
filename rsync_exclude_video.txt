@@ -10,3 +10,15 @@
 *.3gp
 *.3gpp
 *.flv
+*.AVI
+*.MPG
+*.MPEG
+*.MP4
+*.MKV
+*.WMV
+*.MOV
+*.QT
+*.RMVB
+*.3GP
+*.3GPP
+*.FLV
