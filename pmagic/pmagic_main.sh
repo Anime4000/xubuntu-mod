@@ -11,6 +11,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # /usr/share/fonts/TTF
 # ROXTerm
 # /etc/xdg/roxtem.sourceforge.net/Profiles/Default
+# /root/.config/roxtem.sourceforge.net/Profiles/Default
 
 if [[ $EUID -ne 0 ]]; then
 	echo "This script must be run as root!" 
