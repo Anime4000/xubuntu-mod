@@ -46,4 +46,14 @@ if [ "$1" == "-h" ]; then
 	exit 0
 fi
 
-rsync -avh --no-i-r --info=progress2 --exclude=\$RECYCLE.BIN --exclude="System Volume Information" --exclude-from="/etc/cc/exclude.txt" $*
+# since linux bash cant pass quoted arguments, not like MS-DOS
+# do we do some loop then enclose with enviroment
+CMD=rsync
+ARGS="-avh --no-i-r --info=progress2 --exclude=\$RECYCLE.BIN --exclude=System\ Volume\ Information --exclude-from=/etc/cc/exclude.txt"
+
+for A in "$@"
+do
+	ARGS="${ARGS} \"${A}\""
+done
+
+bash -c "${CMD} ${ARGS}"
