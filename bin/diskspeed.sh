@@ -19,8 +19,8 @@ if [ "$1" == "-h" ]; then
 	echo ""
 	echo "Examples:"
 	echo "========="
-  echo "diskspeed /dev/sdb1"
-  echo "diskspeed /dev/sdc2"
+	echo "diskspeed /dev/sdb1"
+	echo "diskspeed /dev/sdc2"
 	exit 0
 fi
 
