@@ -7,6 +7,15 @@
 # Be sure run this script on chroot! (on cubic)
 
 # Nicer
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/bin/diskspeed.sh -O "/bin/diskspeed.sh"
+chmod 755 "/bin/diskspeed.sh"
+ln -s "/bin/diskspeed.sh" "/bin/diskspeed"
+ln -s "/bin/diskspeed.sh" "/bin/sdxtest"
+
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/bin/cpx.sh -O "/bin/cpx.sh"
+chmod 755 "/bin/cpx.sh"
+ln -s "/bin/cpx.sh" "/bin/cpx"
+
 wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/bin/wucp.sh -O "/bin/wucp.sh"
 chmod 755 "/bin/wucp.sh"
 ln -s "/bin/wucp.sh" "/bin/wucp"
