@@ -29,6 +29,15 @@ wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/
 wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/rsync_exclude_video.txt -O "exclude_video.txt"
 
 cd "$DIR/squashfs-root/bin/"
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/bin/diskspeed.sh -O "diskspeed.sh"
+chmod 755 "diskspeed.sh"
+ln -s "diskspeed.sh" "diskspeed"
+ln -s "diskspeed.sh" "sdxtest"
+
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/bin/cpx.sh -O "cpx.sh"
+chmod 755 "cpx.sh"
+ln -s "cpx.sh" "cpx"
+
 wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/bin/wucp.sh -O "wucp.sh"
 chmod 755 "wucp.sh"
 ln -s "wucp.sh" "wucp"
