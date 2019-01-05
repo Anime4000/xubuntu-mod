@@ -31,18 +31,18 @@ if [ "$1" == "-h" ]; then
 	echo "Usage:"
 	echo "cpx [OPTIONS] SRC... DEST"
 	echo ""
-  echo "Note!"
-  echo "====="
-  echo "Copy a folder     Example: ./Desktop"
-  echo "Copy all content  Example: ./Desktop/"
-  echo ""
+	echo "Note!"
+	echo "====="
+	echo "Copy a folder     Example: ./Desktop"
+	echo "Copy all content  Example: ./Desktop/"
+	echo ""
 	echo "Examples:"
-  echo "========="
-  echo "Copy one or more folder to another disk or folder:"
+	echo "========="
+	echo "Copy one or more folder to another disk or folder:"
 	echo "cpx /home/user/Desktop /home/user/Documents /mount/sdb1"
-  echo ""
-  echo "Copy inside folder and a folder to another disk or folder:"
-  echo "cpx /home/user/Desktop/ /home/user/Documents /mount/sdb1
+	echo ""
+	echo "Copy inside folder and a folder to another disk or folder:"
+	echo "cpx /home/user/Desktop/ /home/user/Documents /mount/sdb1
 	exit 0
 fi
 
