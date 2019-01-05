@@ -42,7 +42,7 @@ if [ "$1" == "-h" ]; then
 	echo "cpx /home/user/Desktop /home/user/Documents /mount/sdb1"
 	echo ""
 	echo "Copy inside folder and a folder to another disk or folder:"
-	echo "cpx /home/user/Desktop/ /home/user/Documents /mount/sdb1
+	echo "cpx /home/user/Desktop/ /home/user/Documents /mount/sdb1"
 	exit 0
 fi
 
