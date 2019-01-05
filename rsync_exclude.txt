@@ -3,10 +3,7 @@
 *esktop.ini
 *humbs.db
 *older.jp*
-AlbumArt*.jp*
-Albumart*.jp*
-albumArt*.jp*
-albumart*.jp*
+*lbum*rt*.jp*
 *over.jp*
 *.exe
 *.EXE
