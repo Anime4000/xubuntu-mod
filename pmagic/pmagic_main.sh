@@ -5,7 +5,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # extract sqfs first on current work dir
 # mkdir ~/sqfs
 # cd ~/sqfs
-# sudo unsquashfs /media/anime4000/PM_2017_06_12/pmagic/pmodules/PMAGIC_2017_06_12.SQFS
+sudo unsquashfs /path/to/file.sqfs
 
 # Font:
 # /usr/share/fonts/TTF
@@ -14,7 +14,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # /root/.config/roxtem.sourceforge.net/Profiles/Default
 
 if [[ $EUID -ne 0 ]]; then
-	echo "This script must be run as root!" 
+	echo "This script must be run as root!"
 	exit 1
 fi
 
