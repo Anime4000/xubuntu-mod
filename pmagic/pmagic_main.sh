@@ -10,7 +10,7 @@ sudo unsquashfs /path/to/file.sqfs
 # Font:
 # /usr/share/fonts/TTF
 # ROXTerm
-# /etc/xdg/roxtem.sourceforge.net/Profiles/Default
+# /etc/xdg/roxterm.sourceforge.net/Profiles/Default
 # /root/.config/roxterm.sourceforge.net/Profiles/Default
 
 if [[ $EUID -ne 0 ]]; then
