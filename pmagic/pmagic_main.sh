@@ -40,6 +40,10 @@ chmod 755 "diskspeed.sh"
 ln -s "diskspeed.sh" "diskspeed"
 ln -s "diskspeed.sh" "sdxtest"
 
+wget --no-check-certificate https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py -O "speedtest-cli"
+chmod 755 "speedtest-cli"
+ln -s "speedtest-cli" "speedtest"
+
 wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/bin/cpx.sh -O "cpx.sh"
 chmod 755 "cpx.sh"
 ln -s "cpx.sh" "cpx"
@@ -47,6 +51,14 @@ ln -s "cpx.sh" "cpx"
 wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/bin/wucp.sh -O "wucp.sh"
 chmod 755 "wucp.sh"
 ln -s "wucp.sh" "wucp"
+
+cd "$DIR/squashfs-root/usr/share/fonts/TTF/"
+wget --no-check-certificate http://unifoundry.com/pub/unifont/unifont-11.0.03/font-builds/unifont-11.0.03.ttf -O "unifont-11.0.03.ttf"
+
+cd "$DIR/squashfs-root/etc/xdg/roxtem.sourceforge.net/Profiles/"
+mkdir -p "$DIR/squashfs-root/root/.config/roxtem.sourceforge.net/Profiles/"
+wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/pmagic/roxterm-default.conf -O "Default"
+ln -s "Default" "$DIR/squashfs-root/root/.config/roxtem.sourceforge.net/Profiles/Default"
 
 cd "$DIR"
 mksquashfs squashfs-root filesystem.squashfs -b 1024k -comp xz -Xbcj x86 -e boot
