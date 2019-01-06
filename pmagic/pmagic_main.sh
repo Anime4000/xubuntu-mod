@@ -63,7 +63,7 @@ wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-
 
 rm "squashfs-root/root/.config/roxterm.sourceforge.net/Profiles/Default"
 cp "squashfs-root/etc/xdg/roxterm.sourceforge.net/Profiles/Default" "squashfs-root/root/.config/roxterm.sourceforge.net/Profiles/Default"
-cp "squashfs-root/etc/xdg/roxterm.sourceforge.net/Profiles/Ancient" "squashfs-root/root/.config/roxterm.sourceforge.net/Profiles/Default"
+cp "squashfs-root/etc/xdg/roxterm.sourceforge.net/Profiles/Ancient" "squashfs-root/root/.config/roxterm.sourceforge.net/Profiles/Ancient"
 
 echo "CureLinux" > "squashfs-root/etc/hostname"
 echo "CureLinux.example.org" > "squashfs-root/etc/HOSTNAME"
