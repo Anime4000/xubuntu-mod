@@ -54,11 +54,12 @@ ln -s "wucp.sh" "wucp"
 
 cd "$DIR/squashfs-root/usr/share/fonts/TTF/"
 wget --no-check-certificate http://unifoundry.com/pub/unifont/unifont-11.0.03/font-builds/unifont-11.0.03.ttf -O "unifont-11.0.03.ttf"
+wget --no-check-certificate http://www.thescifiworld.net/downloads/fonts/anquietas.ttf -O "anquietas.ttf"
 
 cd "$DIR"
-rm "squashfs-root/root/.config/roxterm.sourceforge.net/Profiles/Default"
+wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/pmagic/roxterm-default.conf -O "squashfs-root/etc/xdg/roxterm.sourceforge.net/Profiles/Default"
 
-wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/pmagic/roxterm-default.conf -O "squashfs-root/etc/xdg/roxtem.sourceforge.net/Profiles/Default"
+rm "squashfs-root/root/.config/roxterm.sourceforge.net/Profiles/Default"
 
 echo "CureLinux" > "squashfs-root/etc/hostname"
 echo "CureLinux.example.org" > "squashfs-root/etc/HOSTNAME"
