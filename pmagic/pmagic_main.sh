@@ -56,7 +56,8 @@ cd "$DIR/squashfs-root/usr/share/fonts/TTF/"
 wget --no-check-certificate http://unifoundry.com/pub/unifont/unifont-11.0.03/font-builds/unifont-11.0.03.ttf -O "unifont-11.0.03.ttf"
 wget --no-check-certificate http://www.thescifiworld.net/downloads/fonts/anquietas.ttf -O "anquietas.ttf"
 
-mkdir -p "$DIR/squashfs-root/etc/xdg/roxterm.sourceforge.net/Profiles/"
+cd "$DIR"
+mkdir -p "squashfs-root/etc/xdg/roxterm.sourceforge.net/Profiles/"
 wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/pmagic/roxterm-default.conf -O "squashfs-root/etc/xdg/roxterm.sourceforge.net/Profiles/Default"
 wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/pmagic/roxterm-ancient.conf -O "squashfs-root/etc/xdg/roxterm.sourceforge.net/Profiles/Ancient"
 
