@@ -68,6 +68,8 @@ cp "squashfs-root/etc/xdg/roxterm.sourceforge.net/Profiles/Ancient" "squashfs-ro
 echo "CureLinux" > "squashfs-root/etc/hostname"
 echo "CureLinux.example.org" > "squashfs-root/etc/HOSTNAME"
 
+sed -i -e 's/Welcome - Parted Magic/Welcome - Rescue and Recovery/g' squashfs-root/etc/profile
+
 cd "$DIR"
 mksquashfs squashfs-root filesystem.squashfs -b 1024k -comp xz -Xbcj x86 -e boot
 
