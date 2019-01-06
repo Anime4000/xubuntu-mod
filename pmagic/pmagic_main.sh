@@ -11,7 +11,7 @@ sudo unsquashfs /path/to/file.sqfs
 # /usr/share/fonts/TTF
 # ROXTerm
 # /etc/xdg/roxtem.sourceforge.net/Profiles/Default
-# /root/.config/roxtem.sourceforge.net/Profiles/Default
+# /root/.config/roxterm.sourceforge.net/Profiles/Default
 
 if [[ $EUID -ne 0 ]]; then
 	echo "This script must be run as root!"
@@ -56,7 +56,8 @@ cd "$DIR/squashfs-root/usr/share/fonts/TTF/"
 wget --no-check-certificate http://unifoundry.com/pub/unifont/unifont-11.0.03/font-builds/unifont-11.0.03.ttf -O "unifont-11.0.03.ttf"
 
 cd "$DIR"
-rm "squashfs-root/root/.config/roxtem.sourceforge.net/Profiles/Default"
+rm "squashfs-root/root/.config/roxterm.sourceforge.net/Profiles/Default"
+
 wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/pmagic/roxterm-default.conf -O "squashfs-root/etc/xdg/roxtem.sourceforge.net/Profiles/Default"
 
 echo "CureLinux" > "squashfs-root/etc/hostname"
