@@ -55,8 +55,8 @@ ln -s "wucp.sh" "wucp"
 cd "$DIR/squashfs-root/usr/share/fonts/TTF/"
 wget --no-check-certificate http://unifoundry.com/pub/unifont/unifont-11.0.03/font-builds/unifont-11.0.03.ttf -O "unifont-11.0.03.ttf"
 
+rm -f "$DIR/squashfs-root/root/.config/roxtem.sourceforge.net/Profiles/Default"
 cd "$DIR/squashfs-root/etc/xdg/roxtem.sourceforge.net/Profiles/"
-mkdir -p "$DIR/squashfs-root/root/.config/roxtem.sourceforge.net/Profiles/"
 wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/pmagic/roxterm-default.conf -O "Default"
 ln -s "Default" "$DIR/squashfs-root/root/.config/roxtem.sourceforge.net/Profiles/Default"
 
