@@ -59,6 +59,9 @@ cd "$DIR"
 rm "squashfs-root/root/.config/roxtem.sourceforge.net/Profiles/Default"
 wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/pmagic/roxterm-default.conf -O "squashfs-root/etc/xdg/roxtem.sourceforge.net/Profiles/Default"
 
+echo "CureLinux" > "squashfs-root/etc/hostname"
+echo "CureLinux.example.org" > "squashfs-root/etc/HOSTNAME"
+
 cd "$DIR"
 mksquashfs squashfs-root filesystem.squashfs -b 1024k -comp xz -Xbcj x86 -e boot
 
