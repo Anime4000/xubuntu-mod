@@ -58,8 +58,11 @@ wget --no-check-certificate http://www.thescifiworld.net/downloads/fonts/anquiet
 
 cd "$DIR"
 wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/pmagic/roxterm-default.conf -O "squashfs-root/etc/xdg/roxterm.sourceforge.net/Profiles/Default"
+wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/pmagic/roxterm-ancient.conf -O "squashfs-root/etc/xdg/roxterm.sourceforge.net/Profiles/Ancient"
 
 rm "squashfs-root/root/.config/roxterm.sourceforge.net/Profiles/Default"
+cp "squashfs-root/etc/xdg/roxterm.sourceforge.net/Profiles/Default" "squashfs-root/root/.config/roxterm.sourceforge.net/Profiles/Default"
+cp "squashfs-root/etc/xdg/roxterm.sourceforge.net/Profiles/Ancient" "squashfs-root/root/.config/roxterm.sourceforge.net/Profiles/Default"
 
 echo "CureLinux" > "squashfs-root/etc/hostname"
 echo "CureLinux.example.org" > "squashfs-root/etc/HOSTNAME"
