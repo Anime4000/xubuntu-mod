@@ -65,10 +65,16 @@ rm "squashfs-root/root/.config/roxterm.sourceforge.net/Profiles/Default"
 cp "squashfs-root/etc/xdg/roxterm.sourceforge.net/Profiles/Default" "squashfs-root/root/.config/roxterm.sourceforge.net/Profiles/Default"
 cp "squashfs-root/etc/xdg/roxterm.sourceforge.net/Profiles/Ancient" "squashfs-root/root/.config/roxterm.sourceforge.net/Profiles/Ancient"
 
+rm "squashfs-root/usr/share/lxpanel/images/my-computer.png"
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/pmagic/my-computer.png -O "squashfs-root/usr/share/lxpanel/images/my-computer.png"
+
 echo "CureLinux" > "squashfs-root/etc/hostname"
 echo "CureLinux.example.org" > "squashfs-root/etc/HOSTNAME"
 
 sed -i -e 's/Welcome - Parted Magic/Welcome - Rescue and Recovery/g' squashfs-root/etc/profile
+
+sed -i -e 's/tintcolor=#000000/tintcolor=#EDEDED/g' squashfs-root/root/.config/lxpanel/default/panels/panel
+sed -i -e 's/alpha=0/alpha=127/g' squashfs-root/root/.config/lxpanel/default/panels/panel
 
 cd "$DIR"
 mksquashfs squashfs-root filesystem.squashfs -b 1024k -comp xz -Xbcj x86 -e boot
