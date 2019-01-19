@@ -81,7 +81,7 @@ do
 	fi
 done
 
-mkdir -p "${DEST}"
+mkdir -p ${DEST}
 
 echo "[INFO]: Source folders: ${DIRS}"
 echo "[INFO]: Destination folder: ${DEST}"
