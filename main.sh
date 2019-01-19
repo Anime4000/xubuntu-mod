@@ -48,8 +48,8 @@ echo "deb http://free.nchc.org.tw/ubuntu xenial main restricted universe multive
 echo "deb http://free.nchc.org.tw/drbl-core drbl stable" >> /etc/apt/sources.list
 
 # i-nex (cpu-z for linux)
-add-apt-repository ppa:nemh/gambas3 -y
-add-apt-repository ppa:i-nex-development-team/stable -y
+add-apt-repository ppa:gambas-team/gambas3 -y
+add-apt-repository ppa:trebelnik-stefina/i-nex -y
 
 apt-get update
 apt-get install \
