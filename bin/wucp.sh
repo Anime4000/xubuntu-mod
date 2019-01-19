@@ -48,6 +48,7 @@ ARGS="-avh --no-i-r --info=progress2 --exclude-from='/etc/cc/exclude.txt'"
 
 DEST=`readlink -f "$2"`
 DEST="${DEST}/BACKUP_${CLOCK}"
+DEST="\"${DEST}\""
 
 DIRS=""
 
