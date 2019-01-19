@@ -67,14 +67,14 @@ declare -a USERS=("Desktop"
 for i in "${USERS[@]}"
 do
 	RL=`readlink -f "$1"`
-	RL="${RL}\${i}"
+	RL="${RL}/${i}"
 
 	if [ -d "${RL}" ]; then
 		if [ -L "${RL}" ]; then
 			echo "[INFO]: It's symbolic link."
 			echo "[INFO]: Probably Windows Vista & above, Skip!"
 		else
-			echo "[FOUND]: ${RL}"
+			echo "[GET]: ${RL}"
 			DIRS="${DIRS} \"${RL}\""
 		fi
 	fi
@@ -82,8 +82,13 @@ done
 
 mkdir -p "${DEST}"
 
+echo "[INFO]: Source folders: ${DIRS}"
+echo "[INFO]: Destination folder: ${DEST}"
+echo ""
+
 bash -c "${CMD} ${ARGS} ${DIRS} ${DEST}"
 
+echo ""
 echo "-----------"
 echo "| DONE!!! |"
 echo "-----------"
