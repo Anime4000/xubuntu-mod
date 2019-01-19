@@ -8,6 +8,9 @@ echo "         Property of CureComp Technology"
 echo "                            by Anime4000"
 echo ""
 echo ""
+echo "[INFO]: Win XP to 10 Users folder conversion is ENABLED!"
+echo "[INFO]: Ultra Fast Low Level backup is ENABLED!"
+echo ""
 echo ""
 
 if [ $# -eq 0 ]; then
@@ -39,61 +42,37 @@ if [ "$1" == "-h" ]; then
 	exit 0
 fi
 
-DIR_SOURCE=""
+CMD=rsync
+ARGS="-avh --no-i-r --info=progress2 --exclude-from='/etc/cc/exclude.txt'"
+DEST="$(readlink -f $2/backup_$clock)"
+DIRS=""
 
-if [ -d "$1/Desktop" ]; then
-	echo "[FOUND]: $1/Desktop"
-	DIR_SOURCE="$DIR_SOURCE \"$1/Desktop\""
-fi
+declare -a USERS=("Desktop"
+				"Documents"
+				"Downloads"
+				"Music"
+				"Pictures"
+				"Videos"
+				"Favorites"
+				"Links"
+				"My Documents")
 
-if [ -d "$1/Documents" ]; then
-	echo "[FOUND]: $1/Documents"
-	DIR_SOURCE="$DIR_SOURCE \"$1/Documents\""
-fi
-
-if [ -d "$1/Downloads" ]; then
-	echo "[FOUND]: $1/Downloads"
-	DIR_SOURCE="$DIR_SOURCE \"$1/Downloads\""
-fi
-
-if [ -d "$1/Music" ]; then
-	echo "[FOUND]: $1/Music"
-	DIR_SOURCE="$DIR_SOURCE \"$1/Music\""
-fi
-
-if [ -d "$1/Pictures" ]; then
-	echo "[FOUND]: $1/Pictures"
-	DIR_SOURCE="$DIR_SOURCE \"$1/Pictures\""
-fi
-
-if [ -d "$1/Videos" ]; then
-	echo "[FOUND]: $1/Videos"
-	DIR_SOURCE="$DIR_SOURCE \"$1/Videos\""
-fi
-
-if [ -d "$1/Favorites" ]; then
-	echo "[FOUND]: $1/Favorites"
-	DIR_SOURCE="$DIR_SOURCE \"$1/Favorites\""
-fi
-
-if [ -d "$1/Links" ]; then
-	echo "[FOUND]: $1/Links"
-	DIR_SOURCE="$DIR_SOURCE \"$1/Links\""
-fi
-
-if [ -d "$1/My Documents" ]; then
-	if [ -L "$1/My Documents" ]; then
-		echo "[INFO]: It's symbolic link."
-		echo "[INFO]: Probably Windows Vista & above, Skip!"
-	else
-		echo "[FOUND]: $1/My Documents"
-		DIR_SOURCE="$DIR_SOURCE \"$1/My Documents\""
+for i in "${USERS[@]}"
+do
+	if [ -d "$(readlink -f $1/$i)" ]; then
+		if [ -L "$(readlink -f $1/$i)" ]; then
+			echo "[INFO]: It's symbolic link."
+			echo "[INFO]: Probably Windows Vista & above, Skip!"
+		else
+			echo "[FOUND]: $(readlink -f $1/$i)"
+			DIRS="${DIRS} \"$(readlink -f $1/$i)\""
+		fi
 	fi
-fi
+done
 
-cd "$PWD"
-mkdir -p "$2/backup_$clock"
-rsync -avh --no-i-r --info=progress2 --exclude-from="/etc/cc/exclude.txt" $DIR_SOURCE "$2/backup_$clock"
+mkdir -p "${DEST}"
+
+bash -c "${CMD} ${ARGS} ${DIRS} ${DEST}"
 
 echo "-----------"
 echo "| DONE!!! |"
