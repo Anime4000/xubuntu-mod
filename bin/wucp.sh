@@ -1,5 +1,4 @@
 #/bin/bash
-clock=`date +%Y-%m-%d_%H-%M-%S`
 
 echo "----------------------------------------"
 echo "| Backup Windows user files and folder |"
@@ -42,9 +41,14 @@ if [ "$1" == "-h" ]; then
 	exit 0
 fi
 
+CLOCK=`date +%Y-%m-%d_%H-%M-%S`
+
 CMD=rsync
 ARGS="-avh --no-i-r --info=progress2 --exclude-from='/etc/cc/exclude.txt'"
-DEST="$(readlink -f $2/backup_$clock)"
+
+DEST=`readlink -f "$2"`
+DEST="${DEST}/BACKUP_${CLOCK}"
+
 DIRS=""
 
 declare -a USERS=("Desktop"
@@ -55,17 +59,23 @@ declare -a USERS=("Desktop"
 				"Videos"
 				"Favorites"
 				"Links"
-				"My Documents")
+				"My Documents"
+				"OneDrive"
+				"Dropbox"
+				"3D Objects")
 
 for i in "${USERS[@]}"
 do
-	if [ -d "$(readlink -f $1/$i)" ]; then
-		if [ -L "$(readlink -f $1/$i)" ]; then
+	RL=`readlink -f "$1"`
+	RL="${RL}\${i}"
+
+	if [ -d "${RL}" ]; then
+		if [ -L "${RL}" ]; then
 			echo "[INFO]: It's symbolic link."
 			echo "[INFO]: Probably Windows Vista & above, Skip!"
 		else
-			echo "[FOUND]: $(readlink -f $1/$i)"
-			DIRS="${DIRS} \"$(readlink -f $1/$i)\""
+			echo "[FOUND]: ${RL}"
+			DIRS="${DIRS} \"${RL}\""
 		fi
 	fi
 done
