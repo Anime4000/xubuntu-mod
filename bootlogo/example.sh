@@ -11,9 +11,10 @@ wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/
 
 mv "${SCRIPT_HOME}/custom-live-iso/isolinux/bootlogo" "${SCRIPT_HOME}/custom-live-iso/isolinux/bootlogo.ori"
 
+rm -rf "${SCRIPT_HOME}/bootlogo"
 mkdir "${SCRIPT_HOME}/bootlogo"
 cd "${SCRIPT_HOME}/bootlogo"
-cpio -I < ../custom-live-iso/isolinux/bootlogo.ori
+cpio -i < ../custom-live-iso/isolinux/bootlogo.ori
 
 cp -vf "${SCRIPT_HOME}/custom-live-iso/isolinux/splash.png" ./splash.png
 cp -vf "${SCRIPT_HOME}/custom-live-iso/isolinux/splash.pcx" ./splash.pcx
