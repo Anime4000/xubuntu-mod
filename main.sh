@@ -230,17 +230,26 @@ wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/
 chmod 644 /usr/share/plymouth/themes/xubuntu-logo/logo.png
 chmod 644 /usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
 
+echo "Modify Splash Screen (initramfs)"
+INITRD_FILE="/boot/initrd.img-4.18.0-10-generic"
+mkdir -p /tmp/000-initrd
+unmkinitramfs ${INITRD_FILE} /tmp/000-initrd
+cd /tmp/000-initrd/main
+wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/plymouth/logo.png -O "usr/share/plymouth/themes/xubuntu-logo/logo.png"
+wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/plymouth/logo_16bit.png -O "usr/share/plymouth/themes/xubuntu-logo/logo_16bit.png"
+wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/plymouth/wallpaper.png -O "usr/share/plymouth/themes/xubuntu-logo/wallpaper.png"
+mkinitramfs -o ${INITRD_FILE}
+
+echo "Clean temporary files"
+cd ~
+rm -rf /tmp/*
+
 echo ""
 echo ""
 echo ""
 echo "DONE!"
 echo ""
-echo "Now can proceed to external modification, like modify splash screen"
-echo " 1. Open Terminal"
-echo " 2. Run as root"
-echo " 3. Enter Cubic project folder"
-echo " 4. Then enter \"squashfs-root\" folder"
-echo " 5. Run: modscr.sh initrd.img-4.18.0-10-generic initrd-mod.lz"
+echo "Now can proceed to external modification, like modify bootlogo"
 echo ""
 echo ""
 echo ""
