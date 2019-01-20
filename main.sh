@@ -144,7 +144,7 @@ echo "Name=Clonezilla" >> clonezilla.desktop
 echo "GenericName=Disk Cloning" >> clonezilla.desktop
 echo "X-GNOME-FullName=Disk and Image Cloning" >> clonezilla.desktop
 echo "Comment=A free software disaster recovery, disk cloning and deployment solution." >> clonezilla.desktop
-echo "Exec=xterm -fullscreen -fa Terminus -fs 12 -e 'sudo clonezilla ; sudo umount -fdR /home/partimag ; sudo umount -fdR /tmp/ocsroot_bind_root'" >> clonezilla.desktop
+echo "Exec=xterm -fullscreen -fa Terminus -fs 12 -e 'sudo clonezilla ; sudo umount -fdR /home/partimag ; sudo umount -fdR /tmp/ocsroot_bind_root ; sleep 1.5s'" >> clonezilla.desktop
 echo "Icon=stock_xfburn-data-copy" >> clonezilla.desktop
 echo "Terminal=false" >> clonezilla.desktop
 echo "Type=Application" >> clonezilla.desktop
@@ -233,6 +233,13 @@ echo ""
 echo ""
 echo ""
 echo "DONE!"
+echo ""
+echo "Now can proceed to external modification, like modify splash screen"
+echo " 1. Open Terminal"
+echo " 2. Run as root"
+echo " 3. Enter Cubic project folder"
+echo " 4. Then enter \"squashfs-root\" folder"
+echo " 5. Run: modscr.sh initrd.img-4.18.0-10-generic initrd-mod.lz"
 echo ""
 echo ""
 echo ""
