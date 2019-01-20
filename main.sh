@@ -55,6 +55,24 @@ chmod 644 /usr/share/plymouth/themes/xubuntu-logo/logo.png
 chmod 644 /usr/share/plymouth/themes/xubuntu-logo/logo_16bit.png
 chmod 644 /usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
 
+# Add stuff
+wget --no-check-certificate http://drbl.nchc.org.tw/GPG-KEY-DRBL -O - | sudo apt-key add -
+echo "# Clonezilla Repo (added manually)" >> /etc/apt/sources.list
+echo "deb http://free.nchc.org.tw/ubuntu xenial main restricted universe multiverse" >> /etc/apt/sources.list
+echo "deb http://free.nchc.org.tw/drbl-core drbl stable" >> /etc/apt/sources.list
+
+# i-nex (cpu-z for linux)
+add-apt-repository ppa:gambas-team/gambas3 -y
+add-apt-repository ppa:trebelnik-stefina/i-nex -y
+
+apt-get update
+apt-get install \
+build-essential git zlib1g-dev libwrap0-dev xfonts-terminus xfonts-unifont screen xmlstarlet python \
+smartmontools gsmartcontrol htop iptraf gcp unzip openvpn qbittorrent i-nex sysbench \
+hdparm drbl clonezilla reiserfsprogs e2fsprogs hfsprogs exfat-utils nilfs-tools pigz \
+gnome-disk-utility gparted gddrescue testdisk recoverjpeg foremost scalpel florence \
+aircrack-ng reaver ettercap-graphical hydra etherape nmap pppoeconf openssh-server -y
+
 # Edit XFCE4 UI
 # to view xml
 #	xmlstarlet el -v "/etc/xdg/xdg-xubuntu/xfce4/panel/default.xml"
@@ -90,24 +108,6 @@ chmod 644 "/etc/xdg/xdg-xubuntu/xfce4/whiskermenu/defaults.rc"
 
 wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/curecomp-logo.png -O "/usr/share/pixmaps/curecomp-logo.png"
 chmod 644 "/usr/share/pixmaps/curecomp-logo.png"
-
-# Add stuff
-wget --no-check-certificate http://drbl.nchc.org.tw/GPG-KEY-DRBL -O - | sudo apt-key add -
-echo "# Clonezilla Repo (added manually)" >> /etc/apt/sources.list
-echo "deb http://free.nchc.org.tw/ubuntu xenial main restricted universe multiverse" >> /etc/apt/sources.list
-echo "deb http://free.nchc.org.tw/drbl-core drbl stable" >> /etc/apt/sources.list
-
-# i-nex (cpu-z for linux)
-add-apt-repository ppa:gambas-team/gambas3 -y
-add-apt-repository ppa:trebelnik-stefina/i-nex -y
-
-apt-get update
-apt-get install \
-build-essential git zlib1g-dev libwrap0-dev xfonts-terminus xfonts-unifont screen xmlstarlet python \
-smartmontools gsmartcontrol htop iptraf gcp unzip openvpn qbittorrent i-nex sysbench \
-hdparm drbl clonezilla reiserfsprogs e2fsprogs hfsprogs exfat-utils nilfs-tools pigz \
-gnome-disk-utility gparted gddrescue testdisk recoverjpeg foremost scalpel florence \
-aircrack-ng reaver ettercap-graphical hydra etherape nmap pppoeconf openssh-server -y
 
 # Make desktop shortcut
 echo "Adding desktop shortcut icon"
