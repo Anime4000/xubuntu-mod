@@ -86,6 +86,14 @@ mv "/etc/xdg/xdg-xubuntu/xfce4/terminal/terminalrc" "/etc/xdg/xdg-xubuntu/xfce4/
 wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/terminalrc -O "/etc/xdg/xdg-xubuntu/xfce4/terminal/terminalrc"
 chmod 644 "/etc/xdg/xdg-xubuntu/xfce4/terminal/terminalrc"
 
+echo "Modify xfce4-menu"
+rm -f "/etc/xdg/xdg-xubuntu/xfce4/whiskermenu/defaults.rc"
+wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/xfce4-whiskermenu-defaults.rc -O "/etc/xdg/xdg-xubuntu/xfce4/whiskermenu/defaults.rc"
+chmod 644 "/etc/xdg/xdg-xubuntu/xfce4/whiskermenu/defaults.rc"
+
+wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/curecomp-logo.png -O "/usr/share/pixmaps/curecomp-logo.png"
+chmod 644 "/usr/share/pixmaps/curecomp-logo.png"
+
 # Make desktop shortcut
 echo "Adding desktop shortcut icon"
 
