@@ -41,6 +41,20 @@ wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/
 wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/rsync_exclude_audio.txt -O "/etc/cc/exclude_audio.txt"
 wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/rsync_exclude_video.txt -O "/etc/cc/exclude_video.txt"
 
+echo "modifying shutdown/restart script"
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/umount-clonezilla.sh -O "/etc/init.d/umount-clonezilla.sh"
+chmod +x /etc/init.d/umount-clonezilla.sh
+ln -s /etc/init.d/umount-clonezilla.sh /etc/rc0.d/K01umount-clonezilla
+ln -s /etc/init.d/umount-clonezilla.sh /etc/rc6.d/K01umount-clonezilla
+
+echo "Modify Splash Screen"
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/plymouth/logo.png -O /usr/share/plymouth/themes/xubuntu-logo/logo.png
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/plymouth/logo_16bit.png -O /usr/share/plymouth/themes/xubuntu-logo/logo_16bit.png
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/plymouth/wallpaper.png -O /usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
+chmod 644 /usr/share/plymouth/themes/xubuntu-logo/logo.png
+chmod 644 /usr/share/plymouth/themes/xubuntu-logo/logo_16bit.png
+chmod 644 /usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
+
 # Add stuff
 wget --no-check-certificate http://drbl.nchc.org.tw/GPG-KEY-DRBL -O - | sudo apt-key add -
 echo "# Clonezilla Repo (added manually)" >> /etc/apt/sources.list
@@ -215,23 +229,6 @@ rm -rf ~/.cache
 rm -rf ~/.nano
 rm -rf ~/.config
 rm -rf ~/.local
-
-echo "modifying shutdown/restart script"
-wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/umount-clonezilla.sh -O "/etc/init.d/umount-clonezilla.sh"
-chmod +x /etc/init.d/umount-clonezilla.sh
-ln -s /etc/init.d/umount-clonezilla.sh /etc/rc0.d/K01umount-clonezilla
-ln -s /etc/init.d/umount-clonezilla.sh /etc/rc6.d/K01umount-clonezilla
-
-echo "Modify Splash Screen"
-rm -f /usr/share/plymouth/themes/xubuntu-logo/logo.png
-rm -f /usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
-wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/plymouth/logo.png -O /usr/share/plymouth/themes/xubuntu-logo/logo.png
-wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/plymouth/wallpaper.png -O /usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
-chmod 644 /usr/share/plymouth/themes/xubuntu-logo/logo.png
-chmod 644 /usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
-
-echo "Clean temporary files"
-cd ~
 rm -rf /tmp/*
 
 echo ""
