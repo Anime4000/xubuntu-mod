@@ -76,6 +76,7 @@ xmlstarlet ed -L -u "channel/property/property/property[@name='show-removable' a
 xmlstarlet ed -L -u "channel/property/property/property[@name='show-trash' and @type='bool' and @value='true']/@value" -v "false" "/etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml"
 xmlstarlet ed -L -u "channel/property/property/property/property[@name='image-path' and @type='string' and @value='/usr/share/xfce4/backdrops/xubuntu-wallpaper.png']/@value" -v "/usr/share/xfce4/backdrops/curecomp.jpg" "/etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml"
 
+xmlstarlet ed -L -u "channel/property/property[@name='ThemeName' and @type='string']/@value" -v "Numix" "/etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml"
 xmlstarlet ed -L -u "channel/property/property[@name='theme' and @type='string' and @value='Greybird']/@value" -v "Numix" "/etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml"
 xmlstarlet ed -L -u "channel/property/property[@name='title_alignment' and @type='string' and @value='center']/@value" -v "left" "/etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml"
 
