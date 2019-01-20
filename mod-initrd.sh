@@ -5,9 +5,11 @@
 
 echo "Modify Splash Screen (initramfs)"
 
-INITRD_FILE="boot/initrd.img-4.18.0-10-generic"
+SCRIPT_HOME=`pwd`
+INITRD_FILE="$(pwd)/boot/initrd.img-4.18.0-10-generic"
 
 cd "squashfs-root"
+
 mkdir -p tmp/000-initrd
 unmkinitramfs ${INITRD_FILE} tmp/000-initrd
 cd tmp/000-initrd/main
