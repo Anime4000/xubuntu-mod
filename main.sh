@@ -64,7 +64,7 @@ chmod 644 /usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
 
 echo "Modifying xfce4 desktop interface"
 
-apt-get install xmlstarlet
+apt-get install xmlstarlet -y
 
 xmlstarlet ed -L -u "channel/property/property/property[@name='position' and @type='string' and @value='p=6;x=0;y=0']/@value" -v "p=8;x=0;y=0" "/etc/xdg/xdg-xubuntu/xfce4/panel/default.xml"
 xmlstarlet ed -L -u "channel/property/property/property[@name='size' and @type='uint' and @value='24']/@value" -v "32" "/etc/xdg/xdg-xubuntu/xfce4/panel/default.xml"
