@@ -1,20 +1,27 @@
 #!/bin/bash
 
-# Run this outside chroot!
-# Run this script inside Cubic project folder
+# put this script inside Cubic project folder
+# make sure run outside Cubic chroot
+# make sure run as root
 
-echo "Modify Splash Screen (initramfs)"
+echo "Modify Splash Screen (initrd)"
 
 SCRIPT_HOME=`pwd`
-INITRD_FILE="boot/initrd.img-4.18.0-10-generic"
 
-cd "squashfs-root"
+rm -rf "${SCRIPT_HOME}/initrd"
+mkdir "${SCRIPT_HOME}/initrd"
+cd "${SCRIPT_HOME}/initrd"
 
-mkdir -p tmp/000-initrd
-unmkinitramfs ${INITRD_FILE} tmp/000-initrd
+unmkinitramfs ../original-iso-mount/casper/initrd ./
 
-wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/plymouth/logo.png -O "tmp/000-initrd/main/usr/share/plymouth/themes/xubuntu-logo/logo.png"
-wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/plymouth/logo_16bit.png -O "tmp/000-initrd/main/usr/share/plymouth/themes/xubuntu-logo/logo_16bit.png"
-wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/plymouth/wallpaper.png -O "tmp/000-initrd/main/usr/share/plymouth/themes/xubuntu-logo/wallpaper.png"
+rm -f main/usr/share/plymouth/themes/xubuntu-logo/logo.png
+rm -f main/usr/share/plymouth/themes/xubuntu-logo/logo_16bit.png
+rm -f main/usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
+cp ../squashfs-root/usr/share/plymouth/themes/xubuntu-logo/logo.png main/usr/share/plymouth/themes/xubuntu-logo/logo.png
+cp ../squashfs-root/usr/share/plymouth/themes/xubuntu-logo/logo_16bit.png main/usr/share/plymouth/themes/xubuntu-logo/logo_16bit.png
+cp ../squashfs-root/usr/share/plymouth/themes/xubuntu-logo/wallpaper.png main/usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
 
-mkinitramfs -o ${INITRD_FILE}
+rm -f ../custom-live-iso/casper/initrd
+mkinitramfs -c xz -o ../custom-live-iso/casper/initrd
+
+cd ..
