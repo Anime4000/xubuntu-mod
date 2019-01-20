@@ -54,7 +54,7 @@ add-apt-repository ppa:trebelnik-stefina/i-nex -y
 apt-get update
 apt-get install \
 build-essential git zlib1g-dev libwrap0-dev xfonts-terminus xfonts-unifont screen xmlstarlet python \
-smartmontools gsmartcontrol htop iptraf gcp unzip openvpn qbittorrent i-nex sysbench \
+smartmontools gsmartcontrol htop iptraf gcp unzip openvpn qbittorrent i-nex sysbench linux-generic \
 hdparm drbl clonezilla reiserfsprogs e2fsprogs hfsprogs exfat-utils nilfs-tools pigz \
 gnome-disk-utility gparted gddrescue testdisk recoverjpeg foremost scalpel florence \
 aircrack-ng reaver ettercap-graphical hydra etherape nmap pppoeconf openssh-server -y
