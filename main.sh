@@ -54,7 +54,7 @@ add-apt-repository ppa:trebelnik-stefina/i-nex -y
 apt-get update
 apt-get install \
 build-essential git zlib1g-dev libwrap0-dev xfonts-terminus xfonts-unifont screen xmlstarlet python \
-smartmontools gsmartcontrol htop iptraf gcp unzip openvpn qbittorrent i-nex sysbench linux-generic \
+smartmontools gsmartcontrol htop iptraf gcp unzip openvpn qbittorrent i-nex sysbench \
 hdparm drbl clonezilla reiserfsprogs e2fsprogs hfsprogs exfat-utils nilfs-tools pigz \
 gnome-disk-utility gparted gddrescue testdisk recoverjpeg foremost scalpel florence \
 aircrack-ng reaver ettercap-graphical hydra etherape nmap pppoeconf openssh-server -y
@@ -229,17 +229,6 @@ wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/
 wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/plymouth/wallpaper.png -O /usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
 chmod 644 /usr/share/plymouth/themes/xubuntu-logo/logo.png
 chmod 644 /usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
-
-echo "Modify Splash Screen (initramfs)"
-INITRD_FILE="/boot/initrd.img-4.18.0-10-generic"
-mkdir -p /tmp/000-initrd
-unmkinitramfs ${INITRD_FILE} /tmp/000-initrd
-cd /tmp/000-initrd/main
-wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/plymouth/logo.png -O "usr/share/plymouth/themes/xubuntu-logo/logo.png"
-wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/plymouth/logo_16bit.png -O "usr/share/plymouth/themes/xubuntu-logo/logo_16bit.png"
-wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/plymouth/wallpaper.png -O "usr/share/plymouth/themes/xubuntu-logo/wallpaper.png"
-cd /tmp/000-initrd
-mkinitramfs -o ${INITRD_FILE}
 
 echo "Clean temporary files"
 cd ~
