@@ -148,7 +148,7 @@ echo "Name=Task Manager" >> taskmanager.desktop
 echo "GenericName=htop task manager" >> taskmanager.desktop
 echo "X-GNOME-FullName=htop task manager" >> taskmanager.desktop
 echo "Comment=A powerful task manager for linux" >> taskmanager.desktop
-echo "Exec=xfce4-terminal --hide-menubar --title='Task Manager' --geometry=90x30 -e 'sudo htop'" >> taskmanager.desktop
+echo "Exec=xterm -geometry 90x30 -fa Terminus -fs 12 -T 'Task Manager' -e 'sudo htop'" >> taskmanager.desktop
 echo "Icon=xfce4-cpugraph-plugin" >> taskmanager.desktop
 echo "Terminal=false" >> taskmanager.desktop
 echo "Type=Application" >> taskmanager.desktop
