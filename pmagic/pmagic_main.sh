@@ -5,7 +5,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # extract sqfs first on current work dir
 # mkdir ~/sqfs
 # cd ~/sqfs
-sudo unsquashfs /path/to/file.sqfs
+sudo unsquashfs /media/smb1/PMAGIC_2019_01_03.SQFS
 
 # Font:
 # /usr/share/fonts/TTF
@@ -51,6 +51,10 @@ ln -s "cpx.sh" "cpx"
 wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/bin/wucp.sh -O "wucp.sh"
 chmod 755 "wucp.sh"
 ln -s "wucp.sh" "wucp"
+
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/bin/cz.sh -O "cz.sh"
+chmod 755 "cz.sh"
+ln -s "cz.sh" "cz"
 
 cd "$DIR/squashfs-root/usr/share/fonts/TTF/"
 wget --no-check-certificate http://unifoundry.com/pub/unifont/unifont-11.0.03/font-builds/unifont-11.0.03.ttf -O "unifont-11.0.03.ttf"
