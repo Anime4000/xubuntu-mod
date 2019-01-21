@@ -24,6 +24,10 @@ wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/
 chmod 755 "/bin/cclogo.sh"
 ln -s "/bin/cclogo.sh" "/bin/cclogo"
 
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/bin/cz.sh -O "/bin/cz.sh"
+chmod 755 "/bin/cz.sh"
+ln -s "/bin/cz.sh" "/bin/cz"
+
 wget --no-check-certificate https://raw.githubusercontent.com/LionSec/katoolin/master/katoolin.py -O "/bin/katoolin"
 chmod 755 "/bin/katoolin"
 
