@@ -85,7 +85,7 @@ echo "[INFO]: Destination folder: ${DEST}"
 echo ""
 
 mkdir -p "${DEST}"
-bash -c '${CMD} ${ARGS} ${DIRS} "${DEST}"'
+bash -c "${CMD} ${ARGS} ${DIRS} \"${DEST}\""
 
 echo ""
 echo "-----------"
