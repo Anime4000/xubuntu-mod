@@ -48,7 +48,6 @@ ARGS="-avh --no-i-r --info=progress2 --exclude-from='/etc/cc/exclude.txt'"
 
 DEST=`readlink -f "$2"`
 DEST="${DEST}/BACKUP_${CLOCK}"
-DEST="\"${DEST}\""
 
 DIRS=""
 
@@ -81,13 +80,12 @@ do
 	fi
 done
 
-mkdir -p ${DEST}
-
 echo "[INFO]: Source folders: ${DIRS}"
 echo "[INFO]: Destination folder: ${DEST}"
 echo ""
 
-bash -c "${CMD} ${ARGS} ${DIRS} ${DEST}"
+mkdir -p "${DEST}"
+bash -c '${CMD} ${ARGS} ${DIRS} "${DEST}"'
 
 echo ""
 echo "-----------"
