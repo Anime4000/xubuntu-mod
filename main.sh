@@ -113,7 +113,7 @@ build-essential git zlib1g-dev libwrap0-dev xfonts-terminus xfonts-unifont scree
 smartmontools gsmartcontrol htop iptraf gcp unzip openvpn qbittorrent i-nex sysbench \
 hdparm drbl clonezilla reiserfsprogs e2fsprogs hfsprogs exfat-utils nilfs-tools pigz \
 gnome-disk-utility gparted gddrescue testdisk recoverjpeg foremost scalpel florence \
-aircrack-ng reaver ettercap-graphical hydra etherape nmap pppoeconf openssh-server -y
+aircrack-ng reaver ettercap-graphical hydra etherape nmap pppoeconf openssh-server binwalk -y
 
 # Make desktop shortcut
 echo "Adding desktop shortcut icon"
