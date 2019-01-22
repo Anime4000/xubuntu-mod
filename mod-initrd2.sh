@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# put this script inside Cubic project folder
+# make sure run outside Cubic chroot
+# make sure run as root
+
 SCRIPT_HOME=`pwd`
 
 rm -f "${SCRIPT_HOME}/initrd.lz"
