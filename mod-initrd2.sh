@@ -2,6 +2,10 @@
 
 SCRIPT_HOME=`pwd`
 
+rm -f "${SCRIPT_HOME}/initrd.lz"
+rm -f "${SCRIPT_HOME}/initrd.code"
+rm -f "${SCRIPT_HOME}/initrd.new"
+
 rm -rf "${SCRIPT_HOME}/initrd.data"
 mkdir -p "${SCRIPT_HOME}/initrd.data"
 cd "${SCRIPT_HOME}/initrd.data"
