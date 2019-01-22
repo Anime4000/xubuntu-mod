@@ -1,7 +1,14 @@
 #!/bin/bash
 
 echo "Welcome to deployment!"
-clonezilla.sh
+
+if hash clonezilla.sh 2> /dev/null; then
+	echo "clonezilla.sh is found!"
+	clonezilla.sh
+else
+	echo "clonezilla is found!"
+	clonezilla
+fi
 
 echo "Trying to unmount..."
 umount -fdR /home/partimag
