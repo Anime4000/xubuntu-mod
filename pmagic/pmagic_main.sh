@@ -65,6 +65,13 @@ rm "squashfs-root/root/.config/roxterm.sourceforge.net/Profiles/Default"
 cp "squashfs-root/etc/xdg/roxterm.sourceforge.net/Profiles/Default" "squashfs-root/root/.config/roxterm.sourceforge.net/Profiles/Default"
 cp "squashfs-root/etc/xdg/roxterm.sourceforge.net/Profiles/Ancient" "squashfs-root/root/.config/roxterm.sourceforge.net/Profiles/Ancient"
 
+cd "$DIR"
+cd "squashfs-root/usr"
+git clone https://gitlab.com/tianocore_uefi_duet_builds/tianocore_uefi_duet_installer tianocore
+ln -s "tianocore/duet-install" "/bin/duet"
+
+cd "$DIR"
+
 echo "CureLinux" > "squashfs-root/etc/hostname"
 echo "CureLinux.example.org" > "squashfs-root/etc/HOSTNAME"
 

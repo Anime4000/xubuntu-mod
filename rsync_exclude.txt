@@ -31,3 +31,5 @@
 *.TORRENT
 .~lock*
 .~LOCK*
+*.ithmb
+*.ITHMB
