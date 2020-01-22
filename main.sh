@@ -24,6 +24,10 @@ wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/
 chmod 755 "/bin/cclogo.sh"
 ln -s "/bin/cclogo.sh" "/bin/cclogo"
 
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/bin/cz.sh -O "/bin/cz.sh"
+chmod 755 "/bin/cz.sh"
+ln -s "/bin/cz.sh" "/bin/cz"
+
 wget --no-check-certificate https://raw.githubusercontent.com/LionSec/katoolin/master/katoolin.py -O "/bin/katoolin"
 chmod 755 "/bin/katoolin"
 
@@ -41,23 +45,19 @@ wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/
 wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/rsync_exclude_audio.txt -O "/etc/cc/exclude_audio.txt"
 wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/rsync_exclude_video.txt -O "/etc/cc/exclude_video.txt"
 
-# Add stuff
-wget --no-check-certificate http://drbl.nchc.org.tw/GPG-KEY-DRBL -O - | sudo apt-key add -
-echo "# Clonezilla Repo (added manually)" >> /etc/apt/sources.list
-echo "deb http://free.nchc.org.tw/ubuntu xenial main restricted universe multiverse" >> /etc/apt/sources.list
-echo "deb http://free.nchc.org.tw/drbl-core drbl stable" >> /etc/apt/sources.list
+echo "modifying shutdown/restart script"
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/umount-clonezilla.sh -O "/etc/init.d/umount-clonezilla.sh"
+chmod +x /etc/init.d/umount-clonezilla.sh
+ln -s /etc/init.d/umount-clonezilla.sh /etc/rc0.d/K01umount-clonezilla
+ln -s /etc/init.d/umount-clonezilla.sh /etc/rc6.d/K01umount-clonezilla
 
-# i-nex (cpu-z for linux)
-add-apt-repository ppa:nemh/gambas3 -y
-add-apt-repository ppa:i-nex-development-team/stable -y
-
-apt-get update
-apt-get install \
-build-essential git zlib1g-dev libwrap0-dev xfonts-terminus screen xmlstarlet python \
-smartmontools gsmartcontrol htop iptraf gcp unzip openvpn qbittorrent i-nex sysbench \
-hdparm drbl clonezilla reiserfsprogs e2fsprogs hfsprogs exfat-utils nilfs-tools pigz \
-gnome-disk-utility gparted gddrescue testdisk recoverjpeg foremost scalpel florence \
-aircrack-ng reaver ettercap-graphical hydra etherape nmap pppoeconf openssh-server -y
+echo "Modify Splash Screen"
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/plymouth/logo.png -O /usr/share/plymouth/themes/xubuntu-logo/logo.png
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/plymouth/logo_16bit.png -O /usr/share/plymouth/themes/xubuntu-logo/logo_16bit.png
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/plymouth/wallpaper.png -O /usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
+chmod 644 /usr/share/plymouth/themes/xubuntu-logo/logo.png
+chmod 644 /usr/share/plymouth/themes/xubuntu-logo/logo_16bit.png
+chmod 644 /usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
 
 # Edit XFCE4 UI
 # to view xml
@@ -68,6 +68,8 @@ aircrack-ng reaver ettercap-graphical hydra etherape nmap pppoeconf openssh-serv
 
 echo "Modifying xfce4 desktop interface"
 
+apt-get install xmlstarlet -y
+
 xmlstarlet ed -L -u "channel/property/property/property[@name='position' and @type='string' and @value='p=6;x=0;y=0']/@value" -v "p=8;x=0;y=0" "/etc/xdg/xdg-xubuntu/xfce4/panel/default.xml"
 xmlstarlet ed -L -u "channel/property/property/property[@name='size' and @type='uint' and @value='24']/@value" -v "32" "/etc/xdg/xdg-xubuntu/xfce4/panel/default.xml"
 
@@ -76,6 +78,7 @@ xmlstarlet ed -L -u "channel/property/property/property[@name='show-removable' a
 xmlstarlet ed -L -u "channel/property/property/property[@name='show-trash' and @type='bool' and @value='true']/@value" -v "false" "/etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml"
 xmlstarlet ed -L -u "channel/property/property/property/property[@name='image-path' and @type='string' and @value='/usr/share/xfce4/backdrops/xubuntu-wallpaper.png']/@value" -v "/usr/share/xfce4/backdrops/curecomp.jpg" "/etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml"
 
+xmlstarlet ed -L -u "channel/property/property[@name='ThemeName' and @type='string']/@value" -v "Numix" "/etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml"
 xmlstarlet ed -L -u "channel/property/property[@name='theme' and @type='string' and @value='Greybird']/@value" -v "Numix" "/etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml"
 xmlstarlet ed -L -u "channel/property/property[@name='title_alignment' and @type='string' and @value='center']/@value" -v "left" "/etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml"
 
@@ -85,6 +88,32 @@ echo "Modify xfce4-terminal"
 mv "/etc/xdg/xdg-xubuntu/xfce4/terminal/terminalrc" "/etc/xdg/xdg-xubuntu/xfce4/terminal/terminalrc.bak"
 wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/terminalrc -O "/etc/xdg/xdg-xubuntu/xfce4/terminal/terminalrc"
 chmod 644 "/etc/xdg/xdg-xubuntu/xfce4/terminal/terminalrc"
+
+echo "Modify xfce4-menu"
+rm -f "/etc/xdg/xdg-xubuntu/xfce4/whiskermenu/defaults.rc"
+wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/xfce4-whiskermenu-defaults.rc -O "/etc/xdg/xdg-xubuntu/xfce4/whiskermenu/defaults.rc"
+chmod 644 "/etc/xdg/xdg-xubuntu/xfce4/whiskermenu/defaults.rc"
+
+wget --no-check-certificate https://raw.githubusercontent.com/Anime4000/xubuntu-mod/master/curecomp-logo.png -O "/usr/share/pixmaps/curecomp-logo.png"
+chmod 644 "/usr/share/pixmaps/curecomp-logo.png"
+
+# Install software, generate initramfs
+wget --no-check-certificate http://drbl.nchc.org.tw/GPG-KEY-DRBL -O - | sudo apt-key add -
+echo "# Clonezilla Repo (added manually)" >> /etc/apt/sources.list
+echo "deb http://free.nchc.org.tw/ubuntu xenial main restricted universe multiverse" >> /etc/apt/sources.list
+echo "deb http://free.nchc.org.tw/drbl-core drbl stable" >> /etc/apt/sources.list
+
+# i-nex (cpu-z for linux)
+add-apt-repository ppa:gambas-team/gambas3 -y
+add-apt-repository ppa:trebelnik-stefina/i-nex -y
+
+apt-get update
+apt-get install \
+build-essential git zlib1g-dev libwrap0-dev xfonts-terminus xfonts-unifont screen python \
+smartmontools gsmartcontrol htop iptraf gcp unzip openvpn qbittorrent i-nex sysbench \
+hdparm drbl clonezilla reiserfsprogs e2fsprogs hfsprogs exfat-utils nilfs-tools pigz \
+gnome-disk-utility gparted gddrescue testdisk recoverjpeg foremost scalpel florence \
+aircrack-ng reaver ettercap-graphical hydra etherape nmap pppoeconf openssh-server binwalk -y
 
 # Make desktop shortcut
 echo "Adding desktop shortcut icon"
@@ -136,8 +165,8 @@ echo "Name=Clonezilla" >> clonezilla.desktop
 echo "GenericName=Disk Cloning" >> clonezilla.desktop
 echo "X-GNOME-FullName=Disk and Image Cloning" >> clonezilla.desktop
 echo "Comment=A free software disaster recovery, disk cloning and deployment solution." >> clonezilla.desktop
-echo "Exec=xterm -fullscreen -fa Terminus -fs 12 -e 'sudo clonezilla && sudo /etc/init.d/umount-clonezilla.sh && xfce4-session-logout'" >> clonezilla.desktop
-echo "Icon=drive-multidisk" >> clonezilla.desktop
+echo "Exec=xterm -fullscreen -fa Terminus -fs 12 -e 'sudo clonezilla ; sudo umount -fdR /home/partimag ; sudo umount -fdR /tmp/ocsroot_bind_root ; sleep 1.5s'" >> clonezilla.desktop
+echo "Icon=stock_xfburn-data-copy" >> clonezilla.desktop
 echo "Terminal=false" >> clonezilla.desktop
 echo "Type=Application" >> clonezilla.desktop
 echo "Categories=GNOME;System;Filesystem;Settings" >> clonezilla.desktop
@@ -148,7 +177,7 @@ echo "Name=Task Manager" >> taskmanager.desktop
 echo "GenericName=htop task manager" >> taskmanager.desktop
 echo "X-GNOME-FullName=htop task manager" >> taskmanager.desktop
 echo "Comment=A powerful task manager for linux" >> taskmanager.desktop
-echo "Exec=xfce4-terminal --hide-menubar --title='Task Manager' --geometry=90x30 -e 'sudo htop'" >> taskmanager.desktop
+echo "Exec=xterm -geometry 90x30 -fa Terminus -fs 12 -T 'Task Manager' -e 'sudo htop'" >> taskmanager.desktop
 echo "Icon=xfce4-cpugraph-plugin" >> taskmanager.desktop
 echo "Terminal=false" >> taskmanager.desktop
 echo "Type=Application" >> taskmanager.desktop
@@ -206,25 +235,14 @@ rm -rf ~/.cache
 rm -rf ~/.nano
 rm -rf ~/.config
 rm -rf ~/.local
-
-echo "modifying shutdown/restart script"
-wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/umount-clonezilla.sh -O "/etc/init.d/umount-clonezilla.sh"
-chmod +x /etc/init.d/umount-clonezilla.sh
-ln -s /etc/init.d/umount-clonezilla.sh /etc/rc0.d/K01umount-clonezilla
-ln -s /etc/init.d/umount-clonezilla.sh /etc/rc6.d/K01umount-clonezilla
-
-echo "Modify Splash Screen"
-rm -f /usr/share/plymouth/themes/xubuntu-logo/logo.png
-rm -f /usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
-wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/plymouth/logo.png -O /usr/share/plymouth/themes/xubuntu-logo/logo.png
-wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/plymouth/wallpaper.png -O /usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
-chmod 644 /usr/share/plymouth/themes/xubuntu-logo/logo.png
-chmod 644 /usr/share/plymouth/themes/xubuntu-logo/wallpaper.png
+rm -rf /tmp/*
 
 echo ""
 echo ""
 echo ""
 echo "DONE!"
+echo ""
+echo "Now can proceed to external modification, like modify bootlogo"
 echo ""
 echo ""
 echo ""

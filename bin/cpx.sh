@@ -49,7 +49,7 @@ fi
 # since linux bash cant pass quoted arguments, not like MS-DOS
 # do we do some loop then enclose with enviroment
 CMD=rsync
-ARGS="-avh --no-i-r --info=progress2 --exclude=\$RECYCLE.BIN --exclude=System\ Volume\ Information --exclude-from=/etc/cc/exclude.txt"
+ARGS="-avh --no-i-r --info=progress2 --exclude=*ECYCL* --exclude=System\ Volume\ Information --exclude-from=/etc/cc/exclude.txt"
 
 for A in "$@"
 do

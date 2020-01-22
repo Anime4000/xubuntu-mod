@@ -1,5 +1,4 @@
 #/bin/bash
-clock=`date +%Y-%m-%d_%H-%M-%S`
 
 echo "----------------------------------------"
 echo "| Backup Windows user files and folder |"
@@ -7,6 +6,9 @@ echo "----------------------------------------"
 echo "         Property of CureComp Technology"
 echo "                            by Anime4000"
 echo ""
+echo ""
+echo "[INFO]: Win XP to 10 Users folder conversion is ENABLED!"
+echo "[INFO]: Ultra Fast Low Level backup is ENABLED!"
 echo ""
 echo ""
 
@@ -39,11 +41,54 @@ if [ "$1" == "-h" ]; then
 	exit 0
 fi
 
-cd "$PWD"
-mkdir -p "$2/backup_$clock"
-rsync -avh --no-i-r --info=progress2 --exclude-from="/etc/cc/exclude.txt" "$1/Desktop" "$1/Documents" "$1/Downloads" "$1/Music" "$1/Pictures" "$1/Videos" "$1/Favorites" "$1/Links" "$2/backup_$clock"
+CLOCK=`date +%Y-%m-%d_%H-%M-%S`
 
-echo "---------"
-echo " DONE!!! "
-echo "---------"
+CMD=rsync
+ARGS="-avh --no-i-r --info=progress2 --exclude-from='/etc/cc/exclude.txt'"
+
+DEST=`readlink -f "$2"`
+DEST="${DEST}/BACKUP_${CLOCK}"
+
+DIRS=""
+
+declare -a USERS=("Desktop"
+				"Documents"
+				"Downloads"
+				"Music"
+				"Pictures"
+				"Videos"
+				"Favorites"
+				"Links"
+				"My Documents"
+				"OneDrive"
+				"Dropbox"
+				"3D Objects")
+
+for i in "${USERS[@]}"
+do
+	RL=`readlink -f "$1"`
+	RL="${RL}/${i}"
+
+	if [ -d "${RL}" ]; then
+		if [ -L "${RL}" ]; then
+			echo "[INFO]: It's symbolic link."
+			echo "[INFO]: Probably Windows Vista & above, Skip!"
+		else
+			echo "[GET]: ${RL}"
+			DIRS="${DIRS} \"${RL}\""
+		fi
+	fi
+done
+
+echo "[INFO]: Source folders: ${DIRS}"
+echo "[INFO]: Destination folder: ${DEST}"
+echo ""
+
+mkdir -p "${DEST}"
+bash -c "${CMD} ${ARGS} ${DIRS} \"${DEST}\""
+
+echo ""
+echo "-----------"
+echo "| DONE!!! |"
+echo "-----------"
 exit 0

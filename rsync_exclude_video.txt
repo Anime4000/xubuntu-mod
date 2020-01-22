@@ -10,6 +10,7 @@
 *.3gp
 *.3gpp
 *.flv
+*.vob
 *.AVI
 *.MPG
 *.MPEG
@@ -22,3 +23,4 @@
 *.3GP
 *.3GPP
 *.FLV
+*.VOB

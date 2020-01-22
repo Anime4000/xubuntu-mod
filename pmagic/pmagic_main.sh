@@ -5,7 +5,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # extract sqfs first on current work dir
 # mkdir ~/sqfs
 # cd ~/sqfs
-sudo unsquashfs /path/to/file.sqfs
+sudo unsquashfs /media/smb1/PMAGIC_2019_01_03.SQFS
 
 # Font:
 # /usr/share/fonts/TTF
@@ -52,6 +52,10 @@ wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/
 chmod 755 "wucp.sh"
 ln -s "wucp.sh" "wucp"
 
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/bin/cz.sh -O "cz.sh"
+chmod 755 "cz.sh"
+ln -s "cz.sh" "cz"
+
 cd "$DIR/squashfs-root/usr/share/fonts/TTF/"
 wget --no-check-certificate http://unifoundry.com/pub/unifont/unifont-11.0.03/font-builds/unifont-11.0.03.ttf -O "unifont-11.0.03.ttf"
 wget --no-check-certificate http://www.thescifiworld.net/downloads/fonts/anquietas.ttf -O "anquietas.ttf"
@@ -71,9 +75,16 @@ git clone https://gitlab.com/tianocore_uefi_duet_builds/tianocore_uefi_duet_inst
 ln -s "tianocore/duet-install" "/bin/duet"
 
 cd "$DIR"
+rm "squashfs-root/usr/share/lxpanel/images/my-computer.png"
+wget --no-check-certificate https://github.com/Anime4000/xubuntu-mod/raw/master/pmagic/my-computer.png -O "squashfs-root/usr/share/lxpanel/images/my-computer.png"
 
 echo "CureLinux" > "squashfs-root/etc/hostname"
 echo "CureLinux.example.org" > "squashfs-root/etc/HOSTNAME"
+
+sed -i -e 's/Welcome - Parted Magic/Welcome - Rescue and Recovery/g' squashfs-root/etc/profile
+
+sed -i -e 's/tintcolor=#000000/tintcolor=#EDEDED/g' squashfs-root/root/.config/lxpanel/default/panels/panel
+sed -i -e 's/alpha=0/alpha=127/g' squashfs-root/root/.config/lxpanel/default/panels/panel
 
 cd "$DIR"
 mksquashfs squashfs-root filesystem.squashfs -b 1024k -comp xz -Xbcj x86 -e boot
